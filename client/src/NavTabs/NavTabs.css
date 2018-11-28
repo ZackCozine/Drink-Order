@@ -1,0 +1,12 @@
+.nav {
+    margin-bottom: 20px;
+    background-color: lightgrey;
+}
+
+a { 
+    color: black;
+}
+
+a:hover { 
+    color: blue;
+}
