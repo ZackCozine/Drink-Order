@@ -1,12 +1,11 @@
-.nav {
+.navbar {
     margin-bottom: 20px;
     background-color: lightgrey;
+    
 }
 
-a { 
-    color: black;
-}
+a:hover {
+    color: grey !important
 
-a:hover { 
-    color: blue;
+
 }
