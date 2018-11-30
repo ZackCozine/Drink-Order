@@ -1,16 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavTabs from "./NavTabs/NavTabs";
-import Search from "./pages/Search/Search";
-import Saved from "./pages/Saved/Saved";
-import Login from "./pages/Login/Login";
-import DrinkList from "./pages/DrinkList/DrinkList"
-import Home from "./pages/HomeLoggedIn/HomeLoggedIn";
-import LiquorList from "./pages/LiquorList/LiquorList";
-import Auth from "./Auth/Auth";
+import {Navbar, NavItem, Icon} from 'react-materialize'
+import './App.css'
 
-class App extends component  {
-  
+
+class App extends Component {
+
   goTo(route) {
     this.props.history.replace(`/${route}`)
   }
@@ -23,19 +18,28 @@ class App extends component  {
     this.props.auth.logout();
   }
 
- 
- 
+
+
   render() {
     const { isAuthenicated } = this.props.auth;
 
     return (
-      <div>
-        
+
+      <div class="nav-wrapper brown darken-3">
+        <div class="container">
+          <Navbar brand='drink order' class="navbar brown darken-3" right>
+            <NavItem><Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Login</Link></NavItem>
+            <NavItem><Link to="/Home" className={window.location.pathname === "/Home" ? "nav-link active" : "nav-link"}>Home</Link></NavItem>
+            <NavItem><Link to="/LiquorList" className={window.location.pathname === "/LiquorList" ? "nav-link active" : "nav-link"}>Liquor</Link></NavItem>
+            <NavItem><Link to="/DrinkList" className={window.location.pathname === "/DrinkList" ? "nav-link active" : "nav-link"}>Drink List</Link></NavItem>
+          </Navbar>
+        </div>
       </div>
+
     )
   }
 
-  
+
 
 };
 

@@ -1,5 +1,9 @@
 import React from 'react';
 import { Route, Router } from "react-router-dom";
+import Login from "./pages/Login/Login";
+import DrinkList from "./pages/DrinkList/DrinkList"
+import Home from "./pages/HomeLoggedIn/HomeLoggedIn";
+import LiquorList from "./pages/LiquorList/LiquorList";
 import App from "./App";
 
 import Auth from "./Auth/Auth";
