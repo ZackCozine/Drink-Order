@@ -1,5 +1,5 @@
 import history from "../history"
-import auth0 from 'autho0-js';
+import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from "./auth0-vars";
 
 export default class Auth {
@@ -26,7 +26,7 @@ export default class Auth {
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult);
-                history.replaceState('/Home');
+                history.replace('/Home');
             }   else if (err) {
                 history.replace('/Home');
                 console.log(err);

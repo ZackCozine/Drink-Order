@@ -20,7 +20,7 @@ class App extends Component {
 
 
   render() {
-    const { isAuthenicated } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     return (
       
@@ -29,7 +29,7 @@ class App extends Component {
           <Navbar brand='drink order' class="navbar brown darken-3" right>
             {/* Login or Logout button */}
             {
-              !isAuthenicated() && (
+              !isAuthenticated() && (
                 <NavItem
                   id="qsLoginBtn"
                   className='nav-link'
@@ -39,7 +39,7 @@ class App extends Component {
               )
             }
             {
-              isAuthenicated() && (
+              isAuthenticated() && (
                 <NavItem
                   id="qsLogoutBtn"
                   className = "nav-link"
