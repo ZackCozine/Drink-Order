@@ -3,10 +3,11 @@ import { Route, Router } from "react-router-dom";
 import App from "./App";
 import Callback from "./Callback/Callback"
 import Home from './pages/HomeLoggedIn/HomeLoggedIn'
-import LiquorList from "./pages/LiquorList/LiquorList"
+import EditLiquor from "./pages/EditLiquor/EditLiquor"
 import DrinkList from "./pages/DrinkList/DrinkList"
 import Auth from "./Auth/Auth";
 import history from './history';
+import AddLiquor from './pages/AddLiquor/AddLiquor'
 
 const auth = new Auth();
 
@@ -22,8 +23,9 @@ export const makeMainRoutes = () => {
             <div>
                 <Route exact path="/" render={(props) => <App auth={auth} {...props} />} />
                 <Route exact path="/Home" render={(props) => <Home auth={auth} {...props}/>} />
-                <Route exact path="/LiquorList" render={(props) => <LiquorList auth={auth} {...props} /> } />
+                <Route exact path="/EditLiquor" render={(props) => <EditLiquor auth={auth} {...props} /> } />
                 <Route exact path="/DrinkList" render = {(props) => <DrinkList auth={auth} {...props} /> } />
+                <Route exact path ="/AddLiquor" render = {(props)=><AddLiquor auth = {auth}{...props} /> } />           }
                 <Route path="/callback" render={(props) => {
                     handleAuthentication(props);
                     return <Callback {...props} />
