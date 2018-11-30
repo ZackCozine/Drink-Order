@@ -1,30 +1,35 @@
 import React from 'react';
 import { Route, Router } from "react-router-dom";
 import App from "./App";
-import Login from './pages/Login/Login';
 import Callback from "./Callback/Callback"
 import Home from './pages/HomeLoggedIn/HomeLoggedIn'
 import LiquorList from "./pages/LiquorList/LiquorList"
 import DrinkList from "./pages/DrinkList/DrinkList"
 import Auth from "./Auth/Auth";
-import history from './history'
+import history from './history';
 
 const auth = new Auth();
 
+const handleAuthentication = ({location}) => {
+    if (/access_token|id_token|error/.test(location.hash)) {
+      auth.handleAuthentication();
+    }
+  }
 
-
-
-
-
-
-return (
-      <Router>
-          <div>
-            <NavTabs />
-            <Route exact path="/" component={Login} />
-            <Route exact path="/Home" component={Home} />
-            <Route exact path="/LiquorList" component={LiquorList} />
-            <Route exact path="/DrinkList" component={DrinkList} />
-          </div>
-        </Router>
-    )
+export const makeMainRoutes = () => {
+    return (
+        <Router history={history}>
+            <div>
+                <NavTabs />
+                <Route exact path="/" render={(props) => <App auth={auth} {...props} />} />
+                <Route exact path="/Home" render={(props) => <Home auth={auth} {...props}/>} />
+                <Route exact path="/LiquorList" render={(props) => <LiquorList auth={auth} {...props} /> } />
+                <Route exact path="/DrinkList" render = {(props) => <DrinkList auth={auth} {...props} /> } />
+                <Route path="/callback" render={(props) => {
+                    handleAuthentication(props);
+                    return <Callback {...props} />
+                }}/>
+            </div>
+            </Router>
+        );
+}

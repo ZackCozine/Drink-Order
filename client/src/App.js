@@ -25,7 +25,7 @@ class App extends Component {
     const { isAuthenicated } = this.props.auth;
 
     return (
-
+      
       <div class="nav-wrapper brown darken-3">
         <div class="container">
           <Navbar brand='drink order' class="navbar brown darken-3" right>
