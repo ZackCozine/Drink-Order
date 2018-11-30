@@ -5,7 +5,7 @@ import NavTabs from "../../NavTabs/NavTabs";
 
 const DrinkList = props => (
     <div>
-        <NavTabs {...this.props} />
+        <NavTabs {...props} />
     
         <div class="container">
             <Collection>
