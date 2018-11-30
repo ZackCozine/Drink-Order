@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import DrinkList from "./pages/DrinkList/DrinkList"
 import Home from "./pages/HomeLoggedIn/HomeLoggedIn";
 import LiquorList from "./pages/LiquorList/LiquorList";
+import LiquorEdit from "./pages/LiquorEdit/LiquorEdit"
 
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
       <Route exact path="/Home" component={Home} />
       <Route exact path="/LiquorList" component={LiquorList} />
       <Route exact path="/DrinkList" component={DrinkList} />
+      <Route exact path="/LiquorEdit" component={LiquorEdit} />
     </div>
   </Router>
 );
