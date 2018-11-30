@@ -17,15 +17,11 @@ const recipeLiquorSchema = new Schema({
   quantity: Number
  });
 
- const recipeLiquor = mongoose.model("recipeLiquor", recipeLiquorSchema);
- const mixer = mongoose.model("mixer", mixerSchema);
- const garnish = mongoose.model("garnish", garnishSchema);
-
 const recipeSchema = new Schema({
   name: { type: String, required: true },
-  liquor: [recipeliquor],
-  mixers: [mixer],
-  granish: [garnish],
+  liquor: [recipeLiquorSchema],
+  mixers: [mixerSchema],
+  granish: [garnishSchema],
   glassType: String,
   prep: String,
   cost: Number,
@@ -34,7 +30,4 @@ const recipeSchema = new Schema({
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
 
-module.exports = recipeLiquor;
-module.exports = mixer;
-module.exports = garnish;
 module.exports = Recipe;
