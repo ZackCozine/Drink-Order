@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Navbar, NavItem, Icon } from 'react-materialize'
-import { Link } from 'react-router-dom';
 import './App.css'
 
 
@@ -29,18 +27,40 @@ class App extends Component {
       <div class="nav-wrapper brown darken-3">
         <div class="container">
           <Navbar brand='drink order' class="navbar brown darken-3" right>
-            <NavItem>
-              <Link to="/" 
-              className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Login</Link></NavItem>
-            <NavItem>
-              <Link to="/Home" 
-              className={window.location.pathname === "/Home" ? "nav-link active" : "nav-link"}>Home</Link></NavItem>
-            <NavItem>
-              <Link to="/LiquorList" 
-              className={window.location.pathname === "/LiquorList" ? "nav-link active" : "nav-link"}>Liquor</Link></NavItem>
-            <NavItem>
-              <Link to="/DrinkList" 
-              className={window.location.pathname === "/DrinkList" ? "nav-link active" : "nav-link"}>Drink List</Link></NavItem>
+            {/* Login or Logout button */}
+            {
+              !isAuthenicated() && (
+                <NavItem
+                  id="qsLoginBtn"
+                  className='nav-link'
+                  onClick={this.login.bind(this)}>
+                  Log In
+                  </NavItem>
+              )
+            }
+            {
+              isAuthenicated() && (
+                <NavItem
+                  id="qsLogoutBtn"
+                  className = "nav-link"
+                  onClick = {this.logout.bind(this)}>
+                  Logout
+                  </NavItem>
+              )
+            }
+            
+            {/* Home button */}
+            <NavItem
+               onClick = {this.goTo.bind(this, 'Home')}
+              className="nav-link">Home</NavItem>
+            {/* Liquor list button */}
+            <NavItem
+              onClick = {this.goTo.bind(this, 'LiquorList')} 
+              className="nav-link">Liquor</NavItem>
+            {/* Drink list button */}
+            <NavItem
+              onClick={this.goTo.bind(this, 'DrinkList')} 
+              className="nav-link">Drink List</NavItem>
           </Navbar>
         </div>
       </div>
