@@ -53,13 +53,21 @@ export default class NavTabs extends Component {
                             onClick={this.goTo.bind(this, 'Home')}
                             className="nav-link">Home</NavItem>
                         {/* Liquor list button */}
+                        
 
+                        {
+                           isAuthenticated() && (
+                            <NavItem
+                                onClick={this.goTo.bind(this, 'AddLiquor')}
+                                className="nav-link">Add Liquor</NavItem>
+                           )
+                        }
 
                        {
                            isAuthenticated() && (
                             <NavItem
-                                onClick={this.goTo.bind(this, 'LiquorList')}
-                                className="nav-link">Liquor</NavItem>
+                                onClick={this.goTo.bind(this, 'EditLiquor')}
+                                className="nav-link">Edit Liquor</NavItem>
                            )
                         }
 
