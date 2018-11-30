@@ -36,7 +36,7 @@ const NavTabs = () => (
       <NavItem><Link to="/Home" className={window.location.pathname ==="/Home" ? "nav-link active" : "nav-link"}>Home</Link></NavItem>
       <NavItem><Link to="/LiquorList" className={window.location.pathname ==="/LiquorList" ? "nav-link active" : "nav-link"}>Liquor List</Link></NavItem>
       <NavItem><Link to="/DrinkList" className={window.location.pathname ==="/DrinkList" ? "nav-link active" : "nav-link"}>Drink List</Link></NavItem>
-      <NavItem><Link to="/LiquorEdit" className={window.location.pathname ==="/LiquorEdit" ? "nav-link active" : "nav-link"}>Add Liquor</Link></NavItem>  
+      <NavItem><Link to="/AddLiquor" className={window.location.pathname ==="/AddLiquor" ? "nav-link active" : "nav-link"}>Add Liquor</Link></NavItem>
     </Navbar>
   </div>
 </div> 
