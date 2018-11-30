@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const liquorSchema = new Schema({
   name: { type: String, required: true },
   type: String,
-  bottleVolume: String,
+  bottleVolume: Number,
   bottleCost: Number
 });
 
