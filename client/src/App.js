@@ -1,75 +1,14 @@
 import React, { Component } from "react";
-import { Navbar, NavItem, Icon } from 'react-materialize'
-import './App.css'
+import NavTabs from "./NavTabs/NavTabs";
 
+export default class App extends Component {
+  
 
-class App extends Component {
-
-  goTo(route) {
-    this.props.history.replace(`/${route}`)
+  render () {
+      return (
+      <NavTabs {...this.props} />
+      )
   }
-
-  login() {
-    this.props.auth.login();
-  }
-
-  logout() {
-    this.props.auth.logout();
-  }
+}
 
 
-
-  render() {
-    const { isAuthenticated } = this.props.auth;
-
-    return (
-      
-      <div class="nav-wrapper brown darken-3">
-        <div class="container">
-          <Navbar brand='drink order' class="navbar brown darken-3" right>
-            {/* Login or Logout button */}
-            {
-              !isAuthenticated() && (
-                <NavItem
-                  id="qsLoginBtn"
-                  className='nav-link'
-                  onClick={this.login.bind(this)}>
-                  Log In
-                  </NavItem>
-              )
-            }
-            {
-              isAuthenticated() && (
-                <NavItem
-                  id="qsLogoutBtn"
-                  className = "nav-link"
-                  onClick = {this.logout.bind(this)}>
-                  Logout
-                  </NavItem>
-              )
-            }
-            
-            {/* Home button */}
-            <NavItem
-               onClick = {this.goTo.bind(this, 'Home')}
-              className="nav-link">Home</NavItem>
-            {/* Liquor list button */}
-            <NavItem
-              onClick = {this.goTo.bind(this, 'LiquorList')} 
-              className="nav-link">Liquor</NavItem>
-            {/* Drink list button */}
-            <NavItem
-              onClick={this.goTo.bind(this, 'DrinkList')} 
-              className="nav-link">Drink List</NavItem>
-          </Navbar>
-        </div>
-      </div>
-
-    )
-  }
-
-
-
-};
-
-export default App;
