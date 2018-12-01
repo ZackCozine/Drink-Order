@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LiquorForm from "./LiquorForm.js";
 // import SearchList from "./SearchList.js";
 import API from "../../utils/API";
+import NavTabs from "../../NavTabs/NavTabs";
 
 class AddLiquor extends Component {
   state = {
@@ -49,16 +50,23 @@ class AddLiquor extends Component {
   };
 
   render() {
+
+    const { isAuthentcated } = this.props.auth;
+      
     return (
+
       <div>
-        <LiquorForm
-          name={this.state.name}
-          type={this.state.type}
-          bottleVolume={this.state.bottleVolume}
-          bottleCost={this.state.bottleCost}
-          handleSaveLiquor={this.handleSaveLiquor}
-          handleInputChange={this.handleInputChange}
-        />
+        <NavTabs {...this.props} />
+        <div>
+          <LiquorForm
+            name={this.state.name}
+            type={this.state.type}
+            bottleVolume={this.state.bottleVolume}
+            bottleCost={this.state.bottleCost}
+            handleSaveLiquor={this.handleSaveLiquor}
+            handleInputChange={this.handleInputChange}
+          />
+        </div>
       </div>
     );
   }
