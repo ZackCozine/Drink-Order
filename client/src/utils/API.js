@@ -9,8 +9,8 @@ export default {
     return axios.get(BASEURL + query + MAX);
   },
   // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+  getLiquor: function() {
+    return axios.get("/api/drinks");
   },
   // Gets the book with the given id
   getBook: function(id) {
