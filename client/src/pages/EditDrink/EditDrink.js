@@ -6,7 +6,7 @@ import API from "../../utils/API";
 import { Button, Input, Row, MediaBox } from 'react-materialize';
 import NavTabs from "../../NavTabs/NavTabs";
 
-class RecipeEdit extends Component {
+class EditDrink extends Component {
 
     state = {
         alcohols: [
@@ -65,7 +65,7 @@ class RecipeEdit extends Component {
 
 
 
-export default RecipeEdit;
+export default EditDrink;
 
 
 // import RecipeForm from "./RecipeForm.js"

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DrinkForm from "./DrinkForm.js"
-import "./DrinkForm.css";
+// import "./DrinkForm.css";
 // import { Collection, CollectionItem } from 'react-materialize';
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
@@ -10,7 +10,7 @@ class AddDrink extends Component {
         // recipe name
         name: "",
         // liquor/liquors needed
-        liquor: "",
+        liquors: "",
         // ingredients that are not liquors needed
         ingredients: ""
     };
@@ -25,17 +25,18 @@ class AddDrink extends Component {
     handleSaveDrink = event => {
         console.log("handleSaveDrink");
         event.preventDefault();
-        API.saveDrink({
+        API.saveRecipe({
             name: this.state.name,
-            liquor: this.state.liquor,
+            liquors: this.state.liquors,
             ingredients: this.state.ingredients
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
-        this.setState({ name: "", liquor: "", ingredients: "" })
+        this.setState({ name: "", liquors: "", ingredients: "" })
     };
 
     render() {
+
         const { isAuthenticated } = this.props.auth;
 
         return (
@@ -44,7 +45,7 @@ class AddDrink extends Component {
                 <div>
                     <DrinkForm
                         name={this.state.name}
-                        liquor={this.state.liquor}
+                        liquors={this.state.liquors}
                         ingredients={this.state.ingredients}
                         handleSaveDrink={this.handleSaveDrink}
                         handleInputChange={this.handleInputChange}
