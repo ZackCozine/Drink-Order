@@ -1,13 +1,13 @@
 import React from "react";
-import "./LiquorForm.css";
+import "./RecipeEdit.css";
 import { Button, Input, Row, MediaBox } from 'react-materialize';
 
 
-const LiquorForm = props => (
+const RecipeForm = props => (
     <form class="container center">
         <img class="responsive-img" src="../../drinkorderlogo.png" />
         <Row>
-            <h1>Add Liquor to your Inventory</h1>
+            <h1>Create a Recipe</h1>
             <Input s={12}
                 label="Name"
                 onChange={props.handleInputChange}
@@ -15,41 +15,32 @@ const LiquorForm = props => (
                 name="name"
                 type="text"
                 className="form-control"
-                id="AddLiquor"
+                id="RecipeEdit"
             />
             <Input s={12}
-                label="Type of Liquor"
+                label="Liquor"
                 onChange={props.handleInputChange}
-                value={props.type}
-                name="type"
+                value={props.liquor}
+                name="liquor"
                 type="text"
                 className="form-control"
-                id="AddLiquor"
+                id="RecipeEdit"
             />
             <Input s={12}
-                label="Bottle Volume (size)"
+                label="Ingredients"
                 onChange={props.handleInputChange}
-                value={props.bottleVolume}
-                name="bottleVolume"
+                value={props.ingredients}
+                name="ingredients"
                 type="text"
                 className="form-control"
-                id="AddLiquor"
-            />
-            <Input s={12} label=
-                "Bottle Cost"
-                onChange={props.handleInputChange}
-                value={props.bottleCost}
-                name="bottleCost"
-                type="text"
-                className="form-control"
-                id="AddLiquor"
+                id="RecipeEdit"
             />
         </Row>
         <Row>
-            <Button waves='light' onClick={props.handleSaveLiquor}
+            <Button waves='light' onClick={props.handleSaveRecipe}
                 className="SaveLiquor-button">Submit</Button>
         </Row>
     </form>
 );
 
-export default LiquorForm;
+export default RecipeForm;

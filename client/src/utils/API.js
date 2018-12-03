@@ -24,6 +24,10 @@ export default {
   saveLiquor: function(LiquorData) {
     console.log("LiquorData: ", LiquorData);
     return axios.post("/api/drinks", LiquorData);
+  },
+  saveRecipe: function(RecipeData) {
+    console.log("Recipe Data: ", RecipeData);
+    return axios.post("/api/recipes", RecipeData)
   }
 };
 
