@@ -50,7 +50,7 @@ export default class NavTabs extends Component {
 
                         {/* Home button */}
                         <NavItem
-                            onClick={this.goTo.bind(this, 'Home')}
+                            onClick={this.goTo.bind(this, '')}
                             className="nav-link">Home</NavItem>
                         {/* Liquor list button */}
                         
