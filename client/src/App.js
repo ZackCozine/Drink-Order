@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import DrinkList from "./pages/DrinkList/DrinkList"
 import Home from "./pages/HomeLoggedIn/HomeLoggedIn";
 import LiquorList from "./pages/LiquorList/LiquorList";
+import RecipeEdit from "./pages/RecipeEdit/RecipeEdit";
 
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
       <Route exact path="/Home" component={Home} />
       <Route exact path="/LiquorList" component={LiquorList} />
       <Route exact path="/DrinkList" component={DrinkList} />
+      <Route exact path="/RecipeEdit" component={RecipeEdit} />
     </div>
   </Router>
 );
