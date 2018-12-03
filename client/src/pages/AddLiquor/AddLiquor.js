@@ -35,17 +35,23 @@ class AddLiquor extends Component {
   };
 
   render() {
+
+    const { isAuthentcated } = this.props.auth;
+      
     return (
+
       <div>
         <NavTabs {...this.props} />
-        <LiquorForm
-          name={this.state.name}
-          type={this.state.type}
-          bottleVolume={this.state.bottleVolume}
-          bottleCost={this.state.bottleCost}
-          handleSaveLiquor={this.handleSaveLiquor}
-          handleInputChange={this.handleInputChange}
-        />
+        <div>
+          <LiquorForm
+            name={this.state.name}
+            type={this.state.type}
+            bottleVolume={this.state.bottleVolume}
+            bottleCost={this.state.bottleCost}
+            handleSaveLiquor={this.handleSaveLiquor}
+            handleInputChange={this.handleInputChange}
+          />
+        </div>
       </div>
     );
   }
