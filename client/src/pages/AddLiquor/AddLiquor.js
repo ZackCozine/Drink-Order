@@ -22,7 +22,7 @@ class AddLiquor extends Component {
 
   // Grabs the user's liqour input from the state and saves it in the mongo database
   handleSaveLiquor = event => {
-    // console.log("handleSaveLiquor");
+    console.log("handleSaveLiquor");
     event.preventDefault();
     API.saveLiquor({
       name: this.state.name,
@@ -31,13 +31,13 @@ class AddLiquor extends Component {
       bottleCost: this.state.bottleCost
     })
       .catch(err => console.log(err));
-      this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
+    this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
   };
 
   render() {
 
-    const { isAuthentcated } = this.props.auth;
-      
+    const { isAuthenticated } = this.props.auth;
+
     return (
 
       <div>
