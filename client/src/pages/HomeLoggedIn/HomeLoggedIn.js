@@ -1,37 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
 import "./HomeLoggedIn.css";
 import {Button, Icon, Row, Collection, CollectionItem} from 'react-materialize';
+import NavTabs from "../../NavTabs/NavTabs"
 
-const Home = props => (
+export default class Home extends Component {
     
-    <div class="container center">
-        <img class="responsive-img" src="../../drinkorderlogo.png" />    
-        <Collection>
-            <CollectionItem href='#'>MAKE A DRINK</CollectionItem>
-            <CollectionItem href='#'>LIQUOR LIST</CollectionItem>
-            <CollectionItem href='#'>DRINK LIST</CollectionItem>
-            <CollectionItem href='#'>LOGOUT</CollectionItem>
-        </Collection>
+    render() {
+       
+        const { isAuthenticated } = this.props.auth;
+        
+        return(
+           <div>
+            <NavTabs {...this.props} />
 
-         <Row>
-            
-            <Button large waves='light'>MAKE A DRINK</Button>
-        </Row>
-        <Row>
-            <Button large waves='light'>LIQUOR LIST</Button>
-        </Row>
-        <Row>
-            <Button large waves='light'>DRINK LIST</Button>
-        </Row>
-        <Row>
-            <Button large waves='light'>LOGOUT</Button>
-        </Row>
-    </div>
+            <div class="container center">
+                
+                <img class="responsive-img" src="../../drinkorderlogo.png" />    
+                
+            {/* { */}
+                {/* !isAuthenticated() && ( */}
+                <Row>
+                    <Button large waves='light'>MAKE A DRINK</Button>
+                </Row>
+                {/* ) */}
+            {/* } */}
+            {/* { */}
+                {/* isAuthenticated() && ( */}
+               <div>
+                <Row>
+                    <Button large waves='light'>LIQUOR LIST</Button>
+                </Row>
+                <Row>
+                    <Button large waves='light'>DRINK LIST</Button>
+                </Row>
+                </div>
+                {/* ) */}
+            {/* } */}
+            </div>
+        </div>
+    
+        )
+    }
+}
 
-)
 
 
 
-
-
-export default Home;

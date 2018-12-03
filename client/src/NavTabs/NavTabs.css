@@ -1,11 +1,10 @@
 .navbar {
     margin-bottom: 20px;
     background-color: lightgrey;
-    
+    font-family: 'Signika', sans-serif;
 }
 
 a:hover {
     color: grey !important
-
 
 }

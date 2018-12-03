@@ -9,8 +9,8 @@ class RecipeEdit extends React.Component{
         
     state = {
         alcohols: [
-            {id: 1, content: 'gin'},
-            {id: 2, content: 'tonic'}
+            // {id: 1, content: 'gin'},
+            // {id: 2, content: 'tonic'}
         ]
     }
     handleChange = (e) => {
