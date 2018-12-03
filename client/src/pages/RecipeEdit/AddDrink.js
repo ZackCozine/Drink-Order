@@ -1,16 +1,17 @@
 import React from "react"
-const AlcoholInputs = ({alcohols, deleteAlc}) => {
+const AddDrink = ({alcohols, deleteAlc}) => {
   
     const alcoholList = alcohols.length ? (
         alcohols.map(alcohol => {
             return (
                 <div className="collection-item" key={alcohol.id}>
-                <span onClick={() => {deleteAlc(alcohol.id)}}>{alcohol.content}</span>
+                <span>{alcohol.content}</span>
+                <button onClick={() => {deleteAlc(alcohol.id)}}>Delete Ingredient</button>
                 </div>
             )
         })
     ) : (
-        <p className="center">You had no ingredients here.</p>
+        <p className="center">You have no ingredients here.</p>
     )
 
     return (
@@ -20,4 +21,4 @@ const AlcoholInputs = ({alcohols, deleteAlc}) => {
     )
     }
 
-  export default AlcoholInputs;
+  export default AddDrink;

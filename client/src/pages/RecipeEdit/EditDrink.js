@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import "./RecipeEdit.css";
-import AlcoholInputs from "./AlcoholInputs";
+import AddDrink from "./AddDrink";
 import {} from 'react-materialize';
 import history from "../../history"
 import auth0 from 'auth0-js';
-import AUTH_CONFIG from "./auth0-vars";
+import AUTH_CONFIG from "../../Auth/auth0-vars";
+import {Button, Input, Row, MediaBox, Select} from 'react-materialize';
 
-import {Button, Input, Row, MediaBox} from 'react-materialize';
-
-class RecipeEdit extends React.Component{
+class EditDrink extends React.Component{
         
     state = {
         alcohols: [
@@ -43,23 +42,39 @@ class RecipeEdit extends React.Component{
             alcohols
         })
     }
+    //Trying to save the recipe to the database.
+    // saveRecipe = (e) => {
+    //     e.preventDefault();
+    //     let recipeData = this.state.alcohols;
+    
+    //     App.post("/EditDrink", (req,res) => {
+    //         recipeData.save()
+    //         .then(item => {
+    //             res.send("Recipe saved to database.");
+    //         })
+    //         .catch(err => {
+    //             res.status(400).send("Unable to save.");
+    //         });
+    //     });
+    //   }   
     render() {
         return (
             <div>
                 <div className="Alcohol container">
                  <h1 className="center blue-text">Alcohols</h1>
-                 <AlcoholInputs alcohols={this.state.alcohols} deleteAlc={this.deleteAlc}/>
+                 <AddDrink alcohols={this.state.alcohols} deleteAlc={this.deleteAlc}/>
                 </div>
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                    <label>Add new ingredient: </label>
+                        <label>Add new ingredient: </label>
                         <input type="text" onChange={this.handleChange} value={this.state.content}/>
+                        <button onClick={this.handleSubmit} value={this.state.content}>Add Ingredient</button>
                     </form>
+                    <button onClick={this.saveRecipe} value={this.state.content}>Save Recipe</button>
                 </div>
             </div>
         );
-
-        }
+         }
     }
     
 
@@ -67,5 +82,5 @@ class RecipeEdit extends React.Component{
 
 
 
-export default RecipeEdit;
+export default EditDrink;
    

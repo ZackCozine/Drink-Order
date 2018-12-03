@@ -7,6 +7,7 @@ import DrinkList from "./pages/DrinkList/DrinkList"
 import Auth from "./Auth/Auth";
 import history from './history';
 import AddLiquor from './pages/AddLiquor/AddLiquor'
+import EditDrink from './pages/RecipeEdit/EditDrink'
 // import LiquorDetail from './pages/LiquorDetail/LiquorDetail'
 
 
@@ -25,7 +26,8 @@ export const makeMainRoutes = () => {
                 <Route exact path="/" render={(props) => <Home auth={auth} {...props} />} />
                 <Route exact path="/EditLiquor" render={(props) => <EditLiquor auth={auth} {...props} /> } />
                 <Route exact path="/DrinkList" render = {(props) => <DrinkList auth={auth} {...props} /> } />
-                <Route exact path ="/AddLiquor" render = {(props)=><AddLiquor auth = {auth}{...props} /> } />           }
+                <Route exact path="/AddLiquor" render = {(props)=><AddLiquor auth = {auth}{...props} /> } />
+                <Route exact path="/EditDrink" render={(props) => <EditDrink auth={auth}{...props} />} />         
                 <Route path="/callback" render={(props) => {
                     handleAuthentication(props);
                     return <Callback {...props} />
