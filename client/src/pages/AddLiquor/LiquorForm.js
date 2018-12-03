@@ -1,6 +1,6 @@
 import React from "react";
 import "./LiquorForm.css";
-import {Button, Input, Row} from 'react-materialize';
+import { Button, Input, Row } from 'react-materialize';
 
 
 const LiquorForm = props => (

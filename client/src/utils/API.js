@@ -22,5 +22,24 @@ export default {
   // Saves a liquor to the database
   saveLiquor: function(LiquorData) {
     return axios.post("/api/liquors", LiquorData);
+  },
+
+  // gets all drinks
+  getRecipe: function () {
+    return axios.get("/api/recipes");
+  },
+  // Gets the drink with the given id
+  updateRecipe: function (id, DrinkData) {
+    // console.log("updateLiquor");
+    return axios.put("/api/recipes/" + id, DrinkData);
+  },
+  // Deletes the drink with the given id
+  deleteRecipe: function (id) {
+    return axios.delete("/api/recipes/" + id);
+  },
+  // Saves a drink to the database
+  saveRecipe: function (DrinkData) {
+    console.log("Recipe Data: ", DrinkData);
+    return axios.post("/api/recipes", DrinkData)
   }
 };
