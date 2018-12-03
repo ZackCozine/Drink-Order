@@ -13,8 +13,7 @@ class AddLiquor extends Component {
 
   // Sets a new search state based on the user input
   handleInputChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value } = event.target
     this.setState({
       [name]: value
     });
@@ -55,6 +54,6 @@ class AddLiquor extends Component {
       </div>
     );
   }
-}
+};
 
 export default AddLiquor;

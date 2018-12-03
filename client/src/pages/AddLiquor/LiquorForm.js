@@ -35,8 +35,8 @@ const LiquorForm = props => (
                 className="form-control"
                 id="AddLiquor"
             />
-            <Input s={12} label=
-                "Bottle Cost"
+            <Input s={12}
+                label="Bottle Cost"
                 onChange={props.handleInputChange}
                 value={props.bottleCost}
                 name="bottleCost"
@@ -46,12 +46,13 @@ const LiquorForm = props => (
             />
         </Row>
         <Row>
-            <Button waves='light'
+            <Button
+                waves='light'
                 disabled={!(props.name && props.type && props.bottleVolume && props.bottleCost)}
                 onClick={props.handleSaveLiquor}
                 className="SaveLiquor-button">
                 Submit
-    </Button>
+            </Button>
         </Row>
     </form>
 );

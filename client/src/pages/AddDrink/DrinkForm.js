@@ -15,16 +15,16 @@ const DrinkForm = props => (
                 name="name"
                 type="text"
                 className="form-control"
-                id="RecipeEdit"
+                id="AddDrink"
             />
             <Input s={12}
-                label="Liquor"
+                label="Liquors"
                 onChange={props.handleInputChange}
-                value={props.liquor}
-                name="liquor"
+                value={props.liquors}
+                name="liquors"
                 type="text"
                 className="form-control"
-                id="RecipeEdit"
+                id="AddDrink"
             />
             <Input s={12}
                 label="Ingredients"
@@ -33,12 +33,17 @@ const DrinkForm = props => (
                 name="ingredients"
                 type="text"
                 className="form-control"
-                id="RecipeEdit"
+                id="AddDrink"
             />
         </Row>
         <Row>
-            <Button waves='light' onClick={props.handleSaveRecipe}
-                className="SaveLiquor-button">Submit</Button>
+            <Button
+                waves='light'
+                disabled={!(props.name && props.liquors && props.ingredients)}
+                onClick={props.handleSaveDrink}
+                className="SaveLiquor-button">
+                Submit
+            </Button>
         </Row>
     </form>
 );
