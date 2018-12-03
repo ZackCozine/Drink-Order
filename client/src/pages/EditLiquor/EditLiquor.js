@@ -55,31 +55,6 @@ class EditLiquor extends Component {
     let bottleVolume = this.state.bottleVolume? this.state.bottleVolume: this.state.Liquor[index].bottleVolume;
     let bottleCost = this.state.bottleCost? this.state.bottleCost: this.state.Liquor[index].bottleCost;
     
-    // if (this.state.name) {
-    //   name = this.state.name;
-    // }
-    // else {
-    //   name = this.state.Liquor[index].name;
-    // }
-    if (this.state.type) {
-      type = this.state.type;
-    }
-    else {
-      type = this.state.Liquor[index].type;
-    }
-    if (this.state.bottleVolume) {
-      bottleVolume = this.state.bottleVolume;
-    }
-    else {
-      bottleVolume = this.state.Liquor[index].bottleVolume;
-    }
-    if (this.state.bottleCost) {
-      bottleCost = this.state.bottleCost;
-    }
-    else {
-      bottleCost = this.state.Liquor[index].bottleCost;
-    }
-    
     API.updateLiquor(id,{
       name: name,
       type: type,

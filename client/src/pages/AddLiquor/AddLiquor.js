@@ -22,7 +22,6 @@ class AddLiquor extends Component {
 
   // Grabs the user's liqour input from the state and saves it in the mongo database
   handleSaveLiquor = event => {
-    // console.log("handleSaveLiquor");
     event.preventDefault();
     API.saveLiquor({
       name: this.state.name,

@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defines methods for the booksController
+// Defines methods for the liquorController
 module.exports = {
   findAll: function(req, res) {
     db.Liquor

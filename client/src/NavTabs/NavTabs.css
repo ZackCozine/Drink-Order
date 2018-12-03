@@ -8,3 +8,8 @@ a:hover {
     color: grey !important
 
 }
+
+.navpad {
+    padding-left: 15%;
+    padding-right: 8%;
+}
