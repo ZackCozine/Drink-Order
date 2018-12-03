@@ -7,6 +7,8 @@ import DrinkList from "./pages/DrinkList/DrinkList"
 import Auth from "./Auth/Auth";
 import history from './history';
 import AddLiquor from './pages/AddLiquor/AddLiquor'
+// import LiquorDetail from './pages/LiquorDetail/LiquorDetail'
+
 
 const auth = new Auth();
 

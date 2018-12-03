@@ -5,7 +5,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Liquor
       .find(req.query)
-      .sort({ date: -1 })
+      .sort({ type: 1, name: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -16,7 +16,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log("create");
     db.Liquor
       .create(req.body)
       .then(dbModel => res.json(dbModel))

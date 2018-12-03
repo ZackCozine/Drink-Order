@@ -1,11 +1,11 @@
 import React from "react";
 import "./LiquorForm.css";
-import {Button, Input, Row, MediaBox} from 'react-materialize';
+import {Button, Input, Row} from 'react-materialize';
 
 
 const LiquorForm = props => (
-<form class="container center">
-<img class="responsive-img" src="../../drinkorderlogo.png" />
+<form className="container center">
+<img className="responsive-img" alt="Drink Order" src="../../drinkorderlogo.png" />
 <Row>
     <h1>Add Liquor to your Inventory</h1>
     <Input s={12}
@@ -46,8 +46,12 @@ const LiquorForm = props => (
     />
 </Row>
 <Row>
-    <Button waves='light' onClick={props.handleSaveLiquor}
-                    className="SaveLiquor-button">Submit</Button>
+    <Button waves='light'
+        disabled={!(props.name && props.type && props.bottleVolume && props.bottleCost)}
+        onClick={props.handleSaveLiquor}
+        className="SaveLiquor-button">
+        Submit
+    </Button>
 </Row>
 </form>
 );
