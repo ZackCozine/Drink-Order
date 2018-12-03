@@ -1,0 +1,126 @@
+import React from "react"
+import CatInputs from "./CatInputs"
+class Form extends React.Component {
+  state = {
+    cats: [{name:"", age:""}],
+    owner: "",
+    description: ""
+  }
+handleChange = (e) => {
+    if (["name", "age"].includes(e.target.className) ) {
+      let cats = [...this.state.cats]
+      cats[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase()
+      this.setState({ cats }, () => console.log(this.state.cats))
+    } else {
+      this.setState({ [e.target.name]: e.target.value.toUpperCase() })
+    }
+  }
+addCat = (e) => {
+    this.setState((prevState) => ({
+      cats: [...prevState.cats, {name:"", age:""}],
+    }));
+  }
+handleSubmit = (e) => { e.preventDefault() }
+render() {
+    let {owner, description, cats} = this.state
+    return (
+      <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
+        <label htmlFor="name">Owner</label> 
+        <input type="text" name="owner" id="owner" value={owner} />
+        <label htmlFor="description">Description</label> 
+        <input type="text" name="description" id="description" value={description} />
+        <button onClick={this.addCat}>Add new cat</button>
+        <CatInputs cats={cats} />
+        <input type="submit" value="Submit" /> 
+      </form>
+    )
+  }
+}
+export default Form
+
+=========================================================
+// src/components/CatInputs.js
+import React from "react"
+const CatInputs = (props) => {
+  return (
+    props.cats.map((val, idx)=> {
+      let catId = `cat-${idx}`, ageId = `age-${idx}`
+      return (
+        <div key={idx}>
+          <label htmlFor={catId}>{`Cat #${idx + 1}`}</label>
+          <input
+            type="text"
+            name={catId}
+            data-id={idx}
+            id={catId}
+            value={props.cats[idx].name} 
+            className="name"
+          />
+          <label htmlFor={ageId}>Age</label>
+          <input
+            type="text"
+            name={ageId}
+            data-id={idx}
+            id={ageId}
+            value={props.cats[idx].age} 
+            className="age"
+          />
+        </div>
+      )
+    })
+  )
+}
+export default CatInputs
+=====================================================
+render () {
+        // const alcohol = this.state;
+        <div>
+            return (
+            <div className="Alcohol"></div>
+            <form onSubmit={this.handleSubmit}>
+            <input
+            type="text"
+            placeholder="Insert Ingredient"
+            value={this.state.alcohol}
+            onChange={this.handleChange}
+            />
+
+
+            
+            <button type="button" onClick={this.handleSubmit}>Submit</button>
+            
+            </form>
+        )
+    
+        </div>
+        
+       
+}   
+=============================================
+handleChange = (e) => {
+        this.setState({ name: e.target.value});
+    }
+    handleSubmit = (e) => {
+        const { name } = this.state;
+        alert(`Added: ${name}`);
+    }
+
+    ===========================================================
+return (
+    props.alcohol.map((val, idx)=> {
+        let alcoholId = `alcohol-${idx}`
+        return (
+            <div key={idx}>
+            <label htmlFor={alcoholId}>{`Alcohol #${idx + 1}`}</label>
+            <input
+                type="text"
+                name={idx}
+                data-id={idx}
+                id={alcoholId}
+                value={props.alcohol[idx].name}
+                className="name"
+            />
+            </div>
+        )
+    })
+  
