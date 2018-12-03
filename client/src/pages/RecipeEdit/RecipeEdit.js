@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./RecipeEdit.css";
 import AlcoholInputs from "./AlcoholInputs";
 import {} from 'react-materialize';
+import history from "../history"
+import auth0 from 'auth0-js';
+import { AUTH_CONFIG } from "./auth0-vars";
 
 import {Button, Input, Row, MediaBox} from 'react-materialize';
 
