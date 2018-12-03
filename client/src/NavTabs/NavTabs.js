@@ -22,9 +22,9 @@ export default class NavTabs extends Component {
 
         return (
 
-            <div class="nav-wrapper brown darken-3">
-                <div class="container">
-                    <Navbar brand='drink order' class="navbar brown darken-3" right>
+            <div className="nav-wrapper brown darken-3">
+                <div className="container">
+                    <Navbar brand='drink order' className="navbar brown darken-3" right>
                         {/* Login or Logout button */}
 
                         {
@@ -50,7 +50,7 @@ export default class NavTabs extends Component {
 
                         {/* Home button */}
                         <NavItem
-                            onClick={this.goTo.bind(this, 'Home')}
+                            onClick={this.goTo.bind(this, '')}
                             className="nav-link">Home</NavItem>
                         {/* Liquor list button */}
                         
