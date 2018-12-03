@@ -1,0 +1,77 @@
+class IncorporationForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      ingredients: [{ name: '', type:'' }],
+    };
+  }
+  
+  handleNameChange = (evt) => {
+    this.setState({ name: evt.target.value });
+  }
+  
+  handleIngredientNameChange = (idx) => (evt) => {
+    const newIngredients = this.state.ingredients.map((ingredient, sidx) => {
+      if (idx !== sidx) return ingredient;
+      return { ...ingredient, name: evt.target.value };
+    });
+    
+    this.setState({ ingredients: newIngredients });
+  }
+  
+  handleSubmit = (evt) => {
+    const { name, ingredients } = this.state;
+    alert(`Incorporated: ${name} with ${ingredients.length} ingredients`);
+  }
+  
+  handleAddShareholder = () => {
+    this.setState({ ingredients: this.state.ingredients.concat([{ name: '' }]) });
+  }
+  
+  handleRemoveShareholder = (idx) => () => {
+    this.setState({ ingredients: this.state.ingredients.filter((s, sidx) => idx !== sidx) });
+  }
+  
+  render() {    
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter Name of Drink"
+          value={this.state.name}
+          onChange={this.handleNameChange}
+        />
+      
+        <h4>Shareholders</h4>
+      
+        {this.state.ingredients.map((ingredient, idx) => (
+          <div className="ingredient">
+            <input
+              type="text"
+              placeholder={`Shareholder #${idx + 1} name`}
+              value={shareholder.name}
+              onChange={this.handleShareholderNameChange(idx)}
+            />
+            <button type="button" onClick={this.handleRemoveShareholder(idx)} className="small">-</button>
+          </div>
+        ))}
+        <button type="button" onClick={this.handleAddShareholder} className="small">Add Shareholder</button>
+        <button>Incorporate</button>
+      </form>
+    )
+  }
+}
+
+ReactDOM.render(<IncorporationForm />, document.body);
+
+=======================================================
+   {this.state.alcohol.map((idx) => (
+                <div className="alcohol">
+                <input type="text"
+                placeholder={`Alcohol #${idx + 1} name`}
+                value={alcohol.name} {...this.state.name}
+                onChange={this.handleChange}
+                />
+                </div>
+            ))}
