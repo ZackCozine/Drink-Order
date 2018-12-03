@@ -15,8 +15,9 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
+require("dotenv").load();
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/drinkOrder");
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_DB);
 
 // Start the API server
 app.listen(PORT, function() {
