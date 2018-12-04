@@ -4,9 +4,9 @@ import { AUTH_CONFIG } from "./auth0-vars";
 
 export default class Auth {
     auth0 = new auth0.WebAuth({
-        domain: AUTH_CONFIG.domain,
-        clientID: AUTH_CONFIG.clientId,
-        redirectUri: AUTH_CONFIG.callbackUrl,
+        clientID:   AUTH_CONFIG.clientId,
+        domain:   AUTH_CONFIG.domain,
+        redirectUri:  AUTH_CONFIG.callbackUrl,
         responseType: "token id_token",
         scope: "openid"
     });
