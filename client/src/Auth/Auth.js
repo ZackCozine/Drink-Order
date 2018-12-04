@@ -4,9 +4,9 @@ import { AUTH_CONFIG } from "./auth0-vars";
 
 export default class Auth {
     auth0 = new auth0.WebAuth({
-        clientID:  'MvtTUSZdyOeJD3twQM0Ol7aJ2dBOGL0W' || AUTH_CONFIG.clientId,
-        domain:  'snowy-scene-8299.auth0.com' || AUTH_CONFIG.domain,
-        redirectUri: 'https://drink-order.herokuapp.com/callback' || AUTH_CONFIG.callbackUrl,
+        clientID:   AUTH_CONFIG.clientId,
+        domain:   AUTH_CONFIG.domain,
+        redirectUri:  AUTH_CONFIG.callbackUrl,
         responseType: "token id_token",
         scope: "openid"
     });
