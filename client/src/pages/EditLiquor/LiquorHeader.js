@@ -3,7 +3,7 @@ import "./LiquorHeader.css";
 
 // Header for the Edit Liquor page
 const LiquorHeader = () => (
-    <h5 className="LiquorHeader">Liquor</h5>
+    <h5 className="LiquorHeader"> Edit Liquor</h5>
 );
 
 export default LiquorHeader;

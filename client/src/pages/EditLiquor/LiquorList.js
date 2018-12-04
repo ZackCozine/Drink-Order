@@ -1,6 +1,7 @@
 import React from "react";
 import "./LiquorList.css";
 import {Table, Button, Modal, Row, Input} from 'react-materialize';
+
 const LiquorList = props => (
         <div className="container liquorTable">
             <Table striped={false} bordered={false}>
@@ -87,9 +88,5 @@ const LiquorList = props => (
             </Table>
         </div>
     )
-
-
-
-
 
 export default LiquorList;
