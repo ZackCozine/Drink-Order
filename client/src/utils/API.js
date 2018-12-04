@@ -38,8 +38,8 @@ export default {
     return axios.delete("/api/recipes/" + id);
   },
   // Saves a drink to the database
-  saveRecipe: function (DrinkData) {
-    console.log("Recipe Data: ", DrinkData);
-    return axios.post("/api/recipes", DrinkData)
+  saveDrink: function (DrinkData) {
+    console.log("Drink Data: ", DrinkData);
+    return axios.post("/api/drinks", DrinkData)
   }
 };
