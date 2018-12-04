@@ -14,7 +14,7 @@ export default class Home extends Component {
             <NavTabs {...this.props} />
 
             <div class="container center">
-                
+                <br /><br />
                 <img class="responsive-img" src="../../drinkorderlogo.png" />    
                 
             
