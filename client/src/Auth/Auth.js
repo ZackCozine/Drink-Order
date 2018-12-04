@@ -4,9 +4,9 @@ import { AUTH_CONFIG } from "./auth0-vars";
 
 export default class Auth {
     auth0 = new auth0.WebAuth({
-        clientID:  process.env.REACT_APP_AUTH0_CLIENT_ID || AUTH_CONFIG.clientId,
-        domain:  process.env.REACT_APP_AUTH0_CLIENT_SECRET || AUTH_CONFIG.domain,
-        redirectUri: process.env.REACT_APP_AUTH0_CALLBACK_URL || AUTH_CONFIG.callbackUrl,
+        clientID:  'MvtTUSZdyOeJD3twQM0Ol7aJ2dBOGL0W' || AUTH_CONFIG.clientId,
+        domain:  'snowy-scene-8299.auth0.com' || AUTH_CONFIG.domain,
+        redirectUri: 'https://drink-order.herokuapp.com/callback' || AUTH_CONFIG.callbackUrl,
         responseType: "token id_token",
         scope: "openid"
     });
