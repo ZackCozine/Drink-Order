@@ -2,6 +2,7 @@ import history from "../history"
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from "./auth0-vars";
 
+
 export default class Auth {
     auth0 = new auth0.WebAuth({
         clientID:  process.env.AUTH0_CLIENT_ID || AUTH_CONFIG.clientId,
