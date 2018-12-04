@@ -1,5 +1,5 @@
 export const AUTH_CONFIG = {
     domain: 'drink-order.auth0.com',
-    clientId: 'Gq4062xx3-delMHyAkFxcAN_Mo2uGsD9',
+    clientId: process.env.REACT_APP_CLIENT_ID,
     callbackUrl: 'http://localhost:3000/callback'
 }
