@@ -17,25 +17,7 @@ export default class Home extends Component {
                 
                 <img class="responsive-img" src="../../drinkorderlogo.png" />    
                 
-            {/* { */}
-                {/* !isAuthenticated() && ( */}
-                <Row>
-                    <Button large waves='light'>MAKE A DRINK</Button>
-                </Row>
-                {/* ) */}
-            {/* } */}
-            {/* { */}
-                {/* isAuthenticated() && ( */}
-               <div>
-                <Row>
-                    <Button large waves='light'>LIQUOR LIST</Button>
-                </Row>
-                <Row>
-                    <Button large waves='light'>DRINK LIST</Button>
-                </Row>
-                </div>
-                {/* ) */}
-            {/* } */}
+            
             </div>
         </div>
     
