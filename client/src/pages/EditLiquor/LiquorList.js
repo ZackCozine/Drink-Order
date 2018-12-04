@@ -1,6 +1,6 @@
 import React from "react";
 import "./LiquorList.css";
-import {Table, Button, Modal, Row, Input} from 'react-materialize';
+import {Table, Button, Modal, Row, Input, Icon} from 'react-materialize';
 
 const LiquorList = props => (
         <div className="container liquorTable">
@@ -25,7 +25,7 @@ const LiquorList = props => (
                             <td className="editButton">
                                 <Modal
                                     header='Edit Liquor'
-                                    trigger={<Button><i className="material-icons">
+                                    trigger={<Button floating className="light-green"><i className="material-icons">
                                     create
                                     </i></Button>}>
                                     
@@ -77,9 +77,9 @@ const LiquorList = props => (
                                 </Modal>
                             </td>
                             <td className="deleteButton">
-                                <Button onClick={props.handleDeleteLiquor}
+                                <Button floating className="red" onClick={props.handleDeleteLiquor}
                                  name={Liquor._id}>
-                                X
+                                 <i className="material-icons">clear</i>
                                 </Button>
                             </td>
                         </tr>
