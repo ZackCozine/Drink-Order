@@ -10,9 +10,9 @@ class AddDrink extends Component {
         // recipe name
         name: "",
         // liquor/liquors needed
-        liquors: "",
+        liquor1: "",
         // ingredients that are not liquors needed
-        ingredients: ""
+        liquor2: ""
     };
 
     handleInputChange = event => {
@@ -24,15 +24,24 @@ class AddDrink extends Component {
 
     handleSaveDrink = event => {
         console.log("handleSaveDrink");
+        const inputLiquor = [{name: this.state.liquor1, volume: 2}, {name: this.state.liquor2, volume: 3}];
         event.preventDefault();
-        API.saveRecipe({
+        API.saveDrink({
             name: this.state.name,
-            liquors: this.state.liquors,
-            ingredients: this.state.ingredients
+            liquors: this.state.liquor1,
+            mixers: "tonic",
+            granish: "olive",
+            // liquors: inputLiquor,
+            // mixers: [],
+            // granish: [],
+            glassType: "coupe",
+            prep: "Shaken not stirred",
+            cost: 5,
+            price: 0
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
-        this.setState({ name: "", liquors: "", ingredients: "" })
+        this.setState({ name: "", liquor1: "", liquor2: "" })
     };
 
     render() {
@@ -45,8 +54,8 @@ class AddDrink extends Component {
                 <div>
                     <DrinkForm
                         name={this.state.name}
-                        liquors={this.state.liquors}
-                        ingredients={this.state.ingredients}
+                        liquor1={this.state.liquor1}
+                        liquor2={this.state.liquor2}
                         handleSaveDrink={this.handleSaveDrink}
                         handleInputChange={this.handleInputChange}
                     />
@@ -57,28 +66,3 @@ class AddDrink extends Component {
 };
 
 export default AddDrink;
-
-// previously populating our drinks page
-
-// const DrinkList = props => (
-//     <div>
-//         <NavTabs {...props} />
-
-//         <div class="container">
-//             <Collection>
-//                 <CollectionItem href='#'>Sazerac</CollectionItem>
-//                 <CollectionItem href='#'>Manhattan</CollectionItem>
-//                 <CollectionItem href='#'>Old Fashioned</CollectionItem>
-//                 <CollectionItem href='#'>Negroni</CollectionItem>
-//             </Collection>
-//         </div>
-
-//     </div>
-
-
-// )
-
-
-
-
-// export default DrinkList;
