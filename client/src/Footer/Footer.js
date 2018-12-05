@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Footer } from 'react-materialize';
 import "./Footer.css";
-
+import StickyFooter from 'react-sticky-footer';
 export default class footer extends Component {
 
 
@@ -12,8 +12,9 @@ export default class footer extends Component {
 
         return (
 
-            <Footer className="page-footer brown darken-3">Copyright 2015 </Footer>
+            <Footer className="brown darken-3 white-text">Copyright 2015 </Footer>
         )
 }
 }
+
 
