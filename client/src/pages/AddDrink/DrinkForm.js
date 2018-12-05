@@ -35,6 +35,15 @@ const DrinkForm = props => (
                 className="form-control"
                 id="AddDrink"
             />
+            <Input s={12}
+                label="Garnish"
+                onChange={props.handleInputChange}
+                value={props.garnish}
+                name="garnish"
+                type="text"
+                className="form-control"
+                id="AddDrink"
+            />
         </Row>
         <Row>
             <Button

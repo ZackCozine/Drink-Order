@@ -12,7 +12,9 @@ class AddDrink extends Component {
         // liquor/liquors needed
         liquor1: "",
         // ingredients that are not liquors needed
-        liquor2: ""
+        liquor2: "",
+
+        garnish: "",
     };
 
     handleInputChange = event => {
@@ -24,13 +26,14 @@ class AddDrink extends Component {
 
     handleSaveDrink = event => {
         console.log("handleSaveDrink");
-        const inputLiquor = [{name: this.state.liquor1, volume: 2}, {name: this.state.liquor2, volume: 3}];
+        // const inputLiquor = [{name: this.state.liquor1}, {name: this.state.liquor2}];
         event.preventDefault();
         API.saveDrink({
             name: this.state.name,
-            liquors: this.state.liquor1,
+            liquor1: this.state.liquor1,
+            liquor2: this.state.liquor2,
             mixers: "tonic",
-            granish: "olive",
+            garnish: this.state.garnish,
             // liquors: inputLiquor,
             // mixers: [],
             // granish: [],
@@ -41,7 +44,7 @@ class AddDrink extends Component {
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
-        this.setState({ name: "", liquor1: "", liquor2: "" })
+        this.setState({ name: "", liquor1: "", liquor2: "", garnish: "" })
     };
 
     render() {
@@ -56,6 +59,7 @@ class AddDrink extends Component {
                         name={this.state.name}
                         liquor1={this.state.liquor1}
                         liquor2={this.state.liquor2}
+                        garnish={this.state.garnish}
                         handleSaveDrink={this.handleSaveDrink}
                         handleInputChange={this.handleInputChange}
                     />
