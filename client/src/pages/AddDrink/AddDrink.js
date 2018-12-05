@@ -19,13 +19,7 @@ class AddDrink extends Component {
         // { id: 2, content: 'vadker' }
         liquors: [],
         // ingredients that are not liquors needed
-<<<<<<< HEAD
-        liquor2: "",
-
-        garnish: "",
-=======
         ingredients: []
->>>>>>> master
     };
 
     deleteLiquor = (id) => {
@@ -83,23 +77,6 @@ class AddDrink extends Component {
 
     handleSaveDrink = event => {
         console.log("handleSaveDrink");
-<<<<<<< HEAD
-        // const inputLiquor = [{name: this.state.liquor1}, {name: this.state.liquor2}];
-        event.preventDefault();
-        API.saveDrink({
-            name: this.state.name,
-            liquor1: this.state.liquor1,
-            liquor2: this.state.liquor2,
-            // mixers: "tonic",
-            garnish: this.state.garnish,
-            // liquors: inputLiquor,
-            // mixers: [],
-            // granish: [],
-            // glassType: "coupe",
-            // prep: "Shaken not stirred",
-            // cost: 5,
-            // price: 0
-=======
         const inputLiquor = [{ name: this.state.liquor1, volume: 2 }, { name: this.state.liquor2, volume: 3 }];
         event.preventDefault();
         API.saveDrink({
@@ -114,7 +91,6 @@ class AddDrink extends Component {
             prep: "Shaken not stirred",
             cost: 5,
             price: 0
->>>>>>> master
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
@@ -128,18 +104,6 @@ class AddDrink extends Component {
         return (
             <div>
                 <NavTabs {...this.props} />
-<<<<<<< HEAD
-                <div>
-                    <DrinkForm
-                        name={this.state.name}
-                        liquor1={this.state.liquor1}
-                        liquor2={this.state.liquor2}
-                        garnish={this.state.garnish}
-                        handleSaveDrink={this.handleSaveDrink}
-                        handleInputChange={this.handleInputChange}
-                    />
-                </div>
-=======
                 {
                     isAuthenticated() && (
                 
@@ -194,7 +158,6 @@ class AddDrink extends Component {
                     </div>
                     )
                 }  
->>>>>>> master
             </div>
         )
     }
