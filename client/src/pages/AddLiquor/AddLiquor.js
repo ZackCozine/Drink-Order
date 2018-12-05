@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import LiquorForm from "./LiquorForm.js";
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
+<<<<<<< HEAD
 import Profile from "../../Profile/Profile"
+=======
+import AutoSelect from "../../utils/Select"
+>>>>>>> fbe11331e9aa7f739372b9b0369309442d638b49
 
 class AddLiquor extends Component {
   state = {

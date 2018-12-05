@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./HomeLoggedIn.css";
-import {Button, Icon, Row, Collection, CollectionItem} from 'react-materialize';
+// import {Button, Icon, Row, Collection, CollectionItem} from 'react-materialize';
 import NavTabs from "../../NavTabs/NavTabs"
 import Footer from "../../Footer"
 import Profile from "../../Profile/Profile"

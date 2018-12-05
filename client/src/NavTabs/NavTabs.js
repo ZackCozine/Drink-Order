@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, NavItem, Icon, Dropdown, Button} from 'react-materialize'
+import { Navbar, NavItem } from 'react-materialize'
 import "./NavTabs.css";
 // import "../materialize.css"
 
