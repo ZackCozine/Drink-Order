@@ -74,17 +74,25 @@ class EditLiquor extends Component {
     return (
       <div>
         <NavTabs {...this.props} />
-        <LiquorHeader/>
-        <LiquorList 
-          name={this.state.name}
-          type={this.state.type}
-          bottleVolume={this.state.bottleVolume}
-          bottleCost={this.state.bottleCost}
-          Liquor={this.state.Liquor}
-          handleInputChange={this.handleInputChange}
-          handleDeleteLiquor={this.handleDeleteLiquor}
-          handleUpdateLiquor={this.handleUpdateLiquor}
-        />
+        {
+          isAuthenticated() && (
+          <LiquorHeader/>
+          )
+        }
+        {
+          isAuthenticated() && (
+          <LiquorList 
+            name={this.state.name}
+            type={this.state.type}
+            bottleVolume={this.state.bottleVolume}
+            bottleCost={this.state.bottleCost}
+            Liquor={this.state.Liquor}
+            handleInputChange={this.handleInputChange}
+            handleDeleteLiquor={this.handleDeleteLiquor}
+            handleUpdateLiquor={this.handleUpdateLiquor}
+          />
+          )
+        }
       </div>
     );
   }
