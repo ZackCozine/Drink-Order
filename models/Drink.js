@@ -38,7 +38,7 @@ const drinkSchema = new Schema({
   cost: Number,
   price: Number,
   //added to tie drinks to specific USER
-  userID: {type: Number, required: true}
+  userID: {type: String, required: true}
 });
 
 const Drink = mongoose.model("Drink", drinkSchema);

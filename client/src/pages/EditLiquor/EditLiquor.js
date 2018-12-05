@@ -3,6 +3,7 @@ import LiquorList from "./LiquorList.js";
 import LiquorHeader from "./LiquorHeader.js";
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
+import Profile from "../../Profile/Profile"
 
 class EditLiquor extends Component {
   state = {
@@ -96,6 +97,7 @@ class EditLiquor extends Component {
           />
           )
         }
+        { isAuthenticated() && (<Profile {...this.props} />) }
       </div>
     );
   }

@@ -22,10 +22,10 @@ class Profile extends Component {
       const { profile } = this.state;
       console.log(this.props)       
       return (
-          <div>
-          <div><h1>{profile.name}</h1></div>
-          <pre>{JSON.stringify(profile,null,2)}</pre>
-          </div>
+           <div>
+          {/* <div><h1>{profile.name}</h1></div> */}
+          {/* <pre>{JSON.stringify(profile,null,2)}</pre> */}
+          </div> 
       )
       }
   }

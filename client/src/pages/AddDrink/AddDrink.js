@@ -9,6 +9,7 @@ import Liquors from "./Liquors.js";
 import AddLiquor from "./AddLiquor";
 import Ingredients from "./Ingredients.js";
 import AddIngredient from "./AddIngredient";
+import Profile from "../../Profile/Profile"
 
 class AddDrink extends Component {
     state = {
@@ -157,7 +158,8 @@ class AddDrink extends Component {
                         />
                     </div>
                     )
-                }  
+                }
+                { isAuthenticated() && (<Profile {...this.props} />) }  
             </div>
         )
     }
