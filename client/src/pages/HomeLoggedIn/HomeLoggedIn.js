@@ -13,11 +13,12 @@ export default class Home extends Component {
         return(
            <div>
             <NavTabs {...this.props} />
-
+            <main>
             <div class="container center">
                 <br /><br />
                 <img class="responsive-img" src="../../drinkorderlogo.png" />           
             </div>
+            </main>
             <Footer {...this.props}/>
         </div>
     

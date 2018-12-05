@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { Navbar, NavItem, Icon, Dropdown, Button} from 'react-materialize'
+import { Footer } from 'react-materialize';
+import "./Footer.css";
 
-export default class Footer extends Component {
+export default class footer extends Component {
 
 
 
@@ -11,7 +12,7 @@ export default class Footer extends Component {
 
         return (
 
-            <footer >&copy 2015 </footer>
+            <Footer className="page-footer brown darken-3">Copyright 2015 </Footer>
         )
 }
 }
