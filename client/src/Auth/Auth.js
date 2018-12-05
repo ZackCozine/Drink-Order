@@ -11,11 +11,15 @@ export default class Auth {
         scope: "openid profile"
     });
 
+    userProfile;
+
     constructor() {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
+        this.getAccessToken = this.getAccessToken.bind(this);
+        this.getProfile = this.getProfile.bind(this);
     }
 
     login() {
@@ -67,6 +71,7 @@ export default class Auth {
         localStorage.removeItem("access_token");
         localStorage.removeItem("id_token");
         localStorage.removeItem("expires_at");
+        this.userProfile = null;
         // navigate to home route
         history.replace("/")
     }

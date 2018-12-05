@@ -3,17 +3,20 @@ import "./HomeLoggedIn.css";
 import {Button, Icon, Row, Collection, CollectionItem} from 'react-materialize';
 import NavTabs from "../../NavTabs/NavTabs"
 import Footer from "../../Footer"
+import Profile from "../../Profile/Profile"
 
 export default class Home extends Component {
     
     render() {
-       
         const { isAuthenticated } = this.props.auth;
         
         return(
+
            <div>
             <NavTabs {...this.props} />
-
+            
+            { isAuthenticated() && (<Profile {...this.props} />) }
+            
             <div class="container center">
                 <br /><br />
                 <img class="responsive-img" src="../../drinkorderlogo.png" />           
