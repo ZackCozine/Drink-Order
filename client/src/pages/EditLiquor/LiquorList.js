@@ -79,7 +79,7 @@ const LiquorList = props => (
                             <td className="deleteButton">
                                 <Button floating className="red" onClick={props.handleDeleteLiquor}
                                  id={Liquor._id}> 
-                                 <i className="material-icons">clear</i>
+                                 X
                                 </Button>
                             </td>
                         </tr>
