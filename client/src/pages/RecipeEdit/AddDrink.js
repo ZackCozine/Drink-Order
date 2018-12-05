@@ -1,4 +1,6 @@
 import React from "react"
+
+
 const AddDrink = ({alcohols, deleteAlc}) => {
   
     const alcoholList = alcohols.length ? (

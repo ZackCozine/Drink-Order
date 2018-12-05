@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, NavItem, Icon, Dropdown, Button} from 'react-materialize'
 import "./NavTabs.css";
+// import "../materialize.css"
 
 export default class NavTabs extends Component {
 
@@ -22,7 +23,7 @@ export default class NavTabs extends Component {
         const { isAuthenticated } = this.props.auth;
 
         return (
-            <div className="navbar-fixed">
+            // <div className="navbar-fixed">
                 <Navbar brand='drink order' className="navbar brown darken-3 navpad" right>
                     {/* Login or Logout button */}
 
@@ -50,44 +51,25 @@ export default class NavTabs extends Component {
                     {/* Home button */}
                     <NavItem
                         onClick={this.goTo.bind(this, '')}
-                        className="nav-link">Home</NavItem>
+                        className="nav-link">Home
+                        </NavItem>
                     {/* Liquor list button */}
                     
 
-                    {/* {
-                        isAuthenticated() && (
-                            <NavItem>
-                                <Dropdown trigger={
-                                    <NavItem>Liquor</NavItem>
-                                    }>
-                                    <NavItem
-                                        onClick={this.goTo.bind(this, 'AddLiquor')}
-                                        className="nav-link">Add
-                                    </NavItem>
-                                    <NavItem
-                                        onClick={this.goTo.bind(this, 'EditLiquor')}
-                                        className="nav-link">Edit
-                                    </NavItem>
-                                </Dropdown>
-                            </NavItem>
-
-                        )
-                    } */}
-
                     {
-                        isAuthenticated() && (
-                            <NavItem
-                                onClick={this.goTo.bind(this, 'AddLiquor')}
-                                className="nav-link">Add Liquor
-                            </NavItem>
-                        )
+                        // isAuthenticated() && (
+                        //     <NavItem
+                        //         onClick={this.goTo.bind(this, 'AddLiquor')}
+                        //         className="nav-link">Add Liquor
+                        //     </NavItem>
+                        // )
                     }
 
                     {
                         isAuthenticated() && (
                             <NavItem
                                 onClick={this.goTo.bind(this, 'EditLiquor')}
-                                className="nav-link">Edit Liquor
+                                className="nav-link">Liquor
                             </NavItem>
                         )
                     }
@@ -98,12 +80,12 @@ export default class NavTabs extends Component {
                         isAuthenticated() && (
                             <NavItem
                                 onClick={this.goTo.bind(this, 'AddDrink')}
-                                className="nav-link drinkIcon">Add Drink
+                                className="nav-link drinkIcon">Drinks
                             </NavItem>
                         )
                     }
                 </Navbar>
-            </div>
+            // </div>
         )
     }
 };
