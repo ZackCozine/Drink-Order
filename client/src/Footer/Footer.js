@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, NavItem, Icon, Dropdown, Button} from 'react-materialize'
+import { Navbar, NavItem, Icon, Dropdown, Button, Footer } from 'react-materialize'
 
 export default class NavTabs extends Component {
     goTo(route) {
@@ -21,8 +21,8 @@ export default class NavTabs extends Component {
 
         return (
 
-            <Footer copyrights="&copy 2015 Copyright Text"
+            <Footer copyrights="&copy 2015 Copyright Text">
             
-          </Footer>;
+          </Footer>
 }
 
