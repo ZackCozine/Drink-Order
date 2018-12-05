@@ -104,39 +104,60 @@ class AddDrink extends Component {
         return (
             <div>
                 <NavTabs {...this.props} />
-                <div>
-                    <DrinkForm
-                        name={this.state.name}
-                        liquor1={this.state.liquor1}
-                        liquor2={this.state.liquor2}
-                        handleSaveDrink={this.handleSaveDrink}
-                        handleInputChange={this.handleInputChange}
-                    />
-                </div>
-                <div>
-                    <AddLiquor
-                        addLiquor={this.addLiquor}
-                    />
-                </div>
-                <div>
-                    <AddIngredient
-                        addIngredient={this.addIngredient}
-                    />
-                </div>
-                <div className="liquor-app container">
-                    <h1 className="center blue-text">liqqa</h1>
-                    <Liquors
-                        liquors={this.state.liquors}
-                        deleteLiquor={this.deleteLiquor}
-                    />
-                </div>
-                <div className="ingredient-app container">
-                    <h1 className="center blue-text">the 'greeds</h1>
-                    <Ingredients
-                        ingredients={this.state.ingredients}
-                        deleteIngredient={this.deleteIngredient}
-                    />
-                </div>
+                {
+                    isAuthenticated() && (
+                
+                    <div>
+                        <DrinkForm
+                            name={this.state.name}
+                            liquor1={this.state.liquor1}
+                            liquor2={this.state.liquor2}
+                            handleSaveDrink={this.handleSaveDrink}
+                            handleInputChange={this.handleInputChange}
+                        />
+                    </div>
+                    )
+                }
+                {
+                    isAuthenticated() && (
+                    <div>
+                        <AddLiquor
+                            addLiquor={this.addLiquor}
+                        />
+                    </div>
+                    )
+                }
+                {
+                    isAuthenticated() && (
+                    <div>
+                        <AddIngredient
+                            addIngredient={this.addIngredient}
+                        />
+                    </div>
+                    )  
+                }
+                {
+                    isAuthenticated() && (
+                    <div className="liquor-app container">
+                        <h1 className="center blue-text">liqqa</h1>
+                        <Liquors
+                            liquors={this.state.liquors}
+                            deleteLiquor={this.deleteLiquor}
+                        />
+                    </div>
+                    )
+                }
+                {
+                    isAuthenticated() && (
+                    <div className="ingredient-app container">
+                        <h1 className="center blue-text">the 'greeds</h1>
+                        <Ingredients
+                            ingredients={this.state.ingredients}
+                            deleteIngredient={this.deleteIngredient}
+                        />
+                    </div>
+                    )
+                }  
             </div>
         )
     }

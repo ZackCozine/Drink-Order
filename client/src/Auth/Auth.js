@@ -8,7 +8,7 @@ export default class Auth {
         domain:   AUTH_CONFIG.domain,
         redirectUri:  AUTH_CONFIG.callbackUrl,
         responseType: "token id_token",
-        scope: "openid"
+        scope: "openid profile"
     });
 
     constructor() {
@@ -43,6 +43,24 @@ export default class Auth {
         localStorage.setItem('expires_at', expiresAt);
         // navigate to the home route
         history.replace('/');
+      }
+
+      getAccessToken() {
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+          throw new Error('No access token found');
+        }
+        return accessToken;
+      }
+    
+      getProfile(cb) {
+        let accessToken = this.getAccessToken();
+        this.auth0.client.userInfo(accessToken, (err, profile) => {
+          if (profile) {
+            this.userProfile = profile;
+          }
+          cb(err, profile);
+        });
       }
 
     logout() {

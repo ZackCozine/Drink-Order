@@ -34,14 +34,20 @@ class AddLiquor extends Component {
     this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
   };
 
+  getProfile = (profile) => {
+    console.log("++++++++++++++++++",profile)
+  }
   render() {
 
     const { isAuthenticated } = this.props.auth;
+
 
     return (
 
       <div>
         <NavTabs {...this.props} />
+      {
+        isAuthenticated() && (
         <div>
           <LiquorForm
             name={this.state.name}
@@ -53,6 +59,8 @@ class AddLiquor extends Component {
             userID={this.state.userID}
           />
         </div>
+        )  
+      }
       </div>
     )
   }
