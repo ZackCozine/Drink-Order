@@ -10,7 +10,8 @@ class EditLiquor extends Component {
     name: "",
     type: "",
     bottleVolume: "",
-    bottleCost: ""
+    bottleCost: "",
+    userID: ""
   };
 
   // When page is displayed, loadLiquor is called
@@ -85,6 +86,7 @@ class EditLiquor extends Component {
           handleInputChange={this.handleInputChange}
           handleDeleteLiquor={this.handleDeleteLiquor}
           handleUpdateLiquor={this.handleUpdateLiquor}
+          userID={this.state.userID}
         />
       </div>
     );

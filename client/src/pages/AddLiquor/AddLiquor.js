@@ -8,7 +8,8 @@ class AddLiquor extends Component {
     name: "",
     type: "",
     bottleVolume: "",
-    bottleCost: ""
+    bottleCost: "",
+    userID: ""
   };
 
   // Sets a new search state based on the user input
@@ -26,7 +27,8 @@ class AddLiquor extends Component {
       name: this.state.name,
       type: this.state.type,
       bottleVolume: this.state.bottleVolume,
-      bottleCost: this.state.bottleCost
+      bottleCost: this.state.bottleCost,
+      userID: this.state.userID
     })
       .catch(err => console.log(err));
     this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
@@ -48,6 +50,7 @@ class AddLiquor extends Component {
             bottleCost={this.state.bottleCost}
             handleSaveLiquor={this.handleSaveLiquor}
             handleInputChange={this.handleInputChange}
+            userID={this.state.userID}
           />
         </div>
       </div>
