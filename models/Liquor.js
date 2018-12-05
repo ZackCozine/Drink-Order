@@ -9,7 +9,7 @@ const liquorSchema = new Schema({
   bottleCost: Number,
 
   //added User ID to tie liquor to specific users
-  userID: {type: Number, required: true}
+  userID: {type: String, required: true}
 });
 
 const Liquor = mongoose.model("Liquor", liquorSchema);

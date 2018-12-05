@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LiquorForm from "./LiquorForm.js";
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
+import Profile from "../../Profile/Profile"
 
 class AddLiquor extends Component {
   state = {
@@ -23,12 +24,13 @@ class AddLiquor extends Component {
   // Grabs the user's liqour input from the state and saves it in the mongo database
   handleSaveLiquor = event => {
     event.preventDefault();
+    console.log(this.props.auth.userProfile.sub)
     API.saveLiquor({
       name: this.state.name,
       type: this.state.type,
       bottleVolume: this.state.bottleVolume,
       bottleCost: this.state.bottleCost,
-      userID: this.state.userID
+      userID: this.props.auth.userProfile.sub
     })
       .catch(err => console.log(err));
     this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
@@ -49,6 +51,7 @@ class AddLiquor extends Component {
       {
         isAuthenticated() && (
         <div>
+          
           <LiquorForm
             name={this.state.name}
             type={this.state.type}
@@ -61,6 +64,7 @@ class AddLiquor extends Component {
         </div>
         )  
       }
+      { isAuthenticated() && (<Profile {...this.props} />) }
       </div>
     )
   }
