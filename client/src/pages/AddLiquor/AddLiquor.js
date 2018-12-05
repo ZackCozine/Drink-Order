@@ -51,7 +51,7 @@ class AddLiquor extends Component {
           />
         </div>
       </div>
-    );
+    )
   }
 };
 

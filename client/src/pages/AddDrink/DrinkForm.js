@@ -1,6 +1,7 @@
 import React from "react";
 import "./DrinkForm.css";
 import { Button, Input, Row, } from 'react-materialize';
+// import AddLiquor from "./AddLiquor";
 
 
 const DrinkForm = props => (
@@ -8,7 +9,8 @@ const DrinkForm = props => (
         <img className="responsive-img" alt="Drink Order" src="../../drinkorderlogo.png" />
         <Row>
             <h1>Create a Drink</h1>
-            <Input s={12}
+            <Input
+                s={12}
                 label="Name"
                 onChange={props.handleInputChange}
                 value={props.name}
@@ -17,7 +19,8 @@ const DrinkForm = props => (
                 className="form-control"
                 id="AddDrink"
             />
-            <Input s={12}
+            {/* <Input
+                s={12}
                 label="Liquor1"
                 onChange={props.handleInputChange}
                 value={props.liquor1}
@@ -26,7 +29,8 @@ const DrinkForm = props => (
                 className="form-control"
                 id="AddDrink"
             />
-            <Input s={12}
+            <Input
+                s={12}
                 label="Liquor2"
                 onChange={props.handleInputChange}
                 value={props.liquor2}
@@ -34,7 +38,7 @@ const DrinkForm = props => (
                 type="text"
                 className="form-control"
                 id="AddDrink"
-            />
+            /> */}
         </Row>
         <Row>
             <Button
