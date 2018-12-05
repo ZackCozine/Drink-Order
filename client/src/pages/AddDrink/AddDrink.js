@@ -32,19 +32,19 @@ class AddDrink extends Component {
             name: this.state.name,
             liquor1: this.state.liquor1,
             liquor2: this.state.liquor2,
-            mixers: "tonic",
+            // mixers: "tonic",
             garnish: this.state.garnish,
             // liquors: inputLiquor,
             // mixers: [],
             // granish: [],
-            glassType: "coupe",
-            prep: "Shaken not stirred",
-            cost: 5,
-            price: 0
+            // glassType: "coupe",
+            // prep: "Shaken not stirred",
+            // cost: 5,
+            // price: 0
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
-        then.setState({ name: "", liquor1: "", liquor2: "", garnish: "" })
+        this.setState({ name: "", liquor1: "", liquor2: "", garnish: "" })
     };
 
     render() {
