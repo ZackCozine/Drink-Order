@@ -2,9 +2,12 @@ const db = require("../models");
 
 // Defines methods for the liquorController
 module.exports = {
+ 
+
+  //findAll for type 
   findAll: function(req, res) {
     db.Drink
-      .find(req.query)
+      .find({userID: this.props.auth.userProfile.sub})
       .sort({ type: 1, name: 1 })
       .then(dbModel => {
         res.json(dbModel);

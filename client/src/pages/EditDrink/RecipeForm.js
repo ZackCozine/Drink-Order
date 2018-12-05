@@ -1,10 +1,9 @@
 import React from "react";
 import "./RecipeEdit.css";
 import { Button, Input, Row, MediaBox } from 'react-materialize';
-import Profile from "../../Profile/Profile"
+
 
 const RecipeForm = props => (
-     <div>
     <form class="container center">
         <img class="responsive-img" src="../../drinkorderlogo.png" />
         <Row>
@@ -42,10 +41,7 @@ const RecipeForm = props => (
                 className="SaveLiquor-button">Submit</Button>
         </Row>
     </form>
-   
-
-         { isAuthenticated() && (<Profile {...this.props} />) }
-    </div>
+    
 );
 
 export default RecipeForm;
