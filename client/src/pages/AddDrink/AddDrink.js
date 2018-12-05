@@ -138,7 +138,7 @@ class AddDrink extends Component {
                     />
                 </div>
             </div>
-        );
+        )
     }
 };
 
