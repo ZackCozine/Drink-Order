@@ -94,7 +94,7 @@ class AddDrink extends Component {
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
-        this.setState({ name: "", liquor1: "", liquor2: "" })
+        this.setState({ name: "", liquor1: "", liquor2: "", garnish: "" })
     };
 
     render() {
