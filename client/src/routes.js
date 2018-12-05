@@ -12,25 +12,25 @@ import AddLiquor from './pages/AddLiquor/AddLiquor'
 
 const auth = new Auth();
 
-const handleAuthentication = ({location}) => {
+const handleAuthentication = ({ location }) => {
     if (/access_token|id_token|error/.test(location.hash)) {
-      auth.handleAuthentication();
+        auth.handleAuthentication();
     }
-  }
+}
 
 export const makeMainRoutes = () => {
     return (
         <Router history={history}>
             <div>
                 <Route exact path="/" render={(props) => <Home auth={auth} {...props} />} />
-                <Route exact path="/EditLiquor" render={(props) => <EditLiquor auth={auth} {...props} /> } />
-                <Route exact path="/AddDrink" render = {(props) => <AddDrink auth={auth} {...props} /> } />
-                <Route exact path ="/AddLiquor" render = {(props)=><AddLiquor auth = {auth}{...props} /> } />           }
+                <Route exact path="/EditLiquor" render={(props) => <EditLiquor auth={auth} {...props} />} />
+                <Route exact path="/AddDrink" render={(props) => <AddDrink auth={auth} {...props} />} />
+                <Route exact path="/AddLiquor" render={(props) => <AddLiquor auth={auth}{...props} />} />
                 <Route path="/callback" render={(props) => {
                     handleAuthentication(props);
                     return <Callback {...props} />
-                }}/>
+                }} />
             </div>
-            </Router>
-        );
+        </Router>
+    );
 }

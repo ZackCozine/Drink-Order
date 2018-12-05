@@ -41,6 +41,8 @@ class AddLiquor extends Component {
 
       <div>
         <NavTabs {...this.props} />
+      {
+        isAuthenticated() && (
         <div>
           <LiquorForm
             name={this.state.name}
@@ -51,8 +53,10 @@ class AddLiquor extends Component {
             handleInputChange={this.handleInputChange}
           />
         </div>
+        )  
+      }
       </div>
-    );
+    )
   }
 };
 

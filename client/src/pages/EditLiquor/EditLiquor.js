@@ -29,7 +29,9 @@ class EditLiquor extends Component {
 
   // Grabs the id of the chosen liquor from the button name and deletes it from the mongo database
   handleDeleteLiquor = event => {
-    const id = event.target.name;
+    event.preventDefault();
+
+    const id = event.target.id;
     API.deleteLiquor(id)
       .then(res => this.loadLiquor())
       .catch(err => console.log(err));
@@ -73,17 +75,25 @@ class EditLiquor extends Component {
     return (
       <div>
         <NavTabs {...this.props} />
-        <LiquorHeader/>
-        <LiquorList 
-          name={this.state.name}
-          type={this.state.type}
-          bottleVolume={this.state.bottleVolume}
-          bottleCost={this.state.bottleCost}
-          Liquor={this.state.Liquor}
-          handleInputChange={this.handleInputChange}
-          handleDeleteLiquor={this.handleDeleteLiquor}
-          handleUpdateLiquor={this.handleUpdateLiquor}
-        />
+        {
+          isAuthenticated() && (
+          <LiquorHeader/>
+          )
+        }
+        {
+          isAuthenticated() && (
+          <LiquorList 
+            name={this.state.name}
+            type={this.state.type}
+            bottleVolume={this.state.bottleVolume}
+            bottleCost={this.state.bottleCost}
+            Liquor={this.state.Liquor}
+            handleInputChange={this.handleInputChange}
+            handleDeleteLiquor={this.handleDeleteLiquor}
+            handleUpdateLiquor={this.handleUpdateLiquor}
+          />
+          )
+        }
       </div>
     );
   }

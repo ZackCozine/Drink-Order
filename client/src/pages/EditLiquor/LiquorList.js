@@ -77,8 +77,9 @@ const LiquorList = props => (
                                 </Modal>
                             </td>
                             <td className="deleteButton">
-                                <Button floating className="red" onClick={props.handleDeleteLiquor} name={Liquor._id}>
-                                X
+                                <Button floating className="red" onClick={props.handleDeleteLiquor}
+                                 id={Liquor._id}> 
+                                 X
                                 </Button>
                             </td>
                         </tr>
