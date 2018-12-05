@@ -17,6 +17,7 @@ export default {
   },
   // Deletes the liquor with the given id
   deleteLiquor: function(id) {
+    console.log("id is: ",id)
     return axios.delete("/api/liquors/" + id);
   },
   // Saves a liquor to the database
@@ -35,7 +36,9 @@ export default {
   },
   // Deletes the drink with the given id
   deleteRecipe: function (id) {
+    console.log("Delete route hit");
     return axios.delete("/api/recipes/" + id);
+    
   },
   // Saves a drink to the database
   saveDrink: function (DrinkData) {
