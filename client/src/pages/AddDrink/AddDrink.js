@@ -10,9 +10,9 @@ class AddDrink extends Component {
         // recipe name
         name: "",
         // liquor/liquors needed
-        liquor1: "",
+        liquors: [],
         // ingredients that are not liquors needed
-        liquor2: ""
+        ingredients: []
     };
 
     handleInputChange = event => {
@@ -24,16 +24,16 @@ class AddDrink extends Component {
 
     handleSaveDrink = event => {
         console.log("handleSaveDrink");
-        const inputLiquor = [{name: this.state.liquor1, volume: 2}, {name: this.state.liquor2, volume: 3}];
+        const inputLiquor = [{ name: this.state.liquor1, volume: 2 }, { name: this.state.liquor2, volume: 3 }];
         event.preventDefault();
         API.saveDrink({
             name: this.state.name,
             liquors: this.state.liquor1,
             mixers: "tonic",
-            granish: "olive",
+            garnish: "olive",
             // liquors: inputLiquor,
             // mixers: [],
-            // granish: [],
+            // garnish: [],
             glassType: "coupe",
             prep: "Shaken not stirred",
             cost: 5,

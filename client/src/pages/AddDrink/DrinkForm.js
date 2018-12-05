@@ -48,4 +48,19 @@ const DrinkForm = props => (
     </form>
 );
 
+const Liquors = ({ liquors }) => {
+
+    const liquorList = liquors.length ? (
+        liquors.map(liquor => {
+            return (
+                <div>
+                    <span>{liquors}</span>
+                </div>
+            )
+        })
+    ) : (
+            <p>No ingredients yet</p>
+        )
+}
+
 export default DrinkForm;
