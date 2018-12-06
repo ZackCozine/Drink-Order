@@ -11,6 +11,10 @@ export default {
   getLiquor: function() {
     return axios.get("/api/liquors");
   },
+  // Get all liquors by user
+  getLiquorByUser: function(userId) {
+    return axios.get("/api/liquors/" + userId);
+  },
   // Updates the database with new info for a liquor
   updateLiquor: function(id, LiquorData) {
     return axios.put("/api/liquors/" + id, LiquorData);

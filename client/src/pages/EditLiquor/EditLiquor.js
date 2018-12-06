@@ -21,8 +21,20 @@ class EditLiquor extends Component {
   }
 
   // Loads saved liquor from mongo database
+  // loadLiquor = () => {
+  //   API.getLiquor()
+  //     .then(res => {
+  //       this.setState({ Liquor: res.data});
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  // Loads saved liquor by user from mongo database 
   loadLiquor = () => {
-    API.getLiquor()
+    
+    const userId = this.state.userID
+    
+    API.getLiquorByUser(userId)
       .then(res => {
         this.setState({ Liquor: res.data});
       })
