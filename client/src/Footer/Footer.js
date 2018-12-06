@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Footer } from 'react-materialize';
 import "./Footer.css";
-import StickyFooter from 'react-sticky-footer';
 export default class footer extends Component {
 
 

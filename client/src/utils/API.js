@@ -40,7 +40,6 @@ export default {
   // Saves a drink to the database
   saveDrink: function (DrinkData) {
     console.log("Drink Data: ", DrinkData);
-    console.log(this.state.liquor1)
     return axios.post("/api/drinks", DrinkData)
   }
 };
