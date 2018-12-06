@@ -80,11 +80,12 @@ class AddDrink extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
+        console.log(this.state.name);
+        console.log(this.state.liquorVolume);
         this.setState({
             [name]: value
         });
-        console.log(this.state.name);
-        console.log(this.state.liquorVolume);
+
     };
 
     handleSaveDrink = event => {
@@ -173,7 +174,7 @@ class AddDrink extends Component {
                             />
                             <Button
                                 s={2}
-                                // disabled={!(this.liquorVolume)}
+                                disabled={!(this.state.selected && this.state.liquorVolume)}
                                 floating large
                                 className="red"
                                 onClick={this.addDrinkLiquor}
@@ -198,7 +199,6 @@ class AddDrink extends Component {
                                 <Liquors
                                     s={12}
                                     drinkLiquors={this.state.drinkLiquors}
-
                                     deleteDrinkLiquor={this.deleteDrinkLiquor}
                                 />
                             </div>
@@ -218,6 +218,7 @@ class AddDrink extends Component {
 
                         <Row>
                             <Button
+                                disabled={!(this.state.name && this.state.prep)}
                                 waves='light'
                                 onClick={this.handleSaveDrink}
                                 className="saveDrinkButton">
