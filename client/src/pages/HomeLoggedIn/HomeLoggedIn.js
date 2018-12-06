@@ -11,14 +11,6 @@ export default class Home extends Component {
         const { isAuthenticated } = this.props.auth;
         
         return(
-<<<<<<< HEAD
-
-           <div>
-            <NavTabs {...this.props} />
-            
-            { isAuthenticated() && (<Profile {...this.props} />) }
-            
-=======
            <body>
             <header>   
             <NavTabs {...this.props} />
@@ -26,7 +18,6 @@ export default class Home extends Component {
             
             <main>
                 
->>>>>>> master
             <div class="container center">
                 <br /><br />
                 <img class="responsive-img" src="../../drinkorderlogo.png" />
