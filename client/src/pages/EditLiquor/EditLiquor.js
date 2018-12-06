@@ -41,9 +41,9 @@ class EditLiquor extends Component {
 
   // Loads saved liquor by user from mongo database 
   loadLiquor = (err, profile) => {
-    console.log("Profile:", profile.sub, err)
+    console.log("Profile:", profile.nickname, err)
     // const userId = this.props.auth.userProfile.sub
-    const userId = profile.sub
+    const userId = profile.nickname
     
     API.getLiquorByUser(userId)
       .then(res => {

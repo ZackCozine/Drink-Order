@@ -13,7 +13,7 @@ router.route("/:id")
   .delete(liquorController.remove);
 
 // Matches with "/api/liquor/:userId"
-router.route("/:userId")
+router.route("/byuser/:userId")
   .get(liquorController.findByUser);
 
 module.exports = router;
