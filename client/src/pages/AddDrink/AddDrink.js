@@ -37,7 +37,7 @@ class AddDrink extends Component {
 
     addDrinkLiquor = (event) => {
         event.preventDefault();
-        const liquorIndex = this.state.selected-1; 
+        const liquorIndex = this.state.selected - 1;
         console.log("this.state.selected: ", this.state.selected);
         console.log('addDrinkLiquor: ', liquorIndex);
         console.log('liquorVolume: ', this.state.liquorVolume);
@@ -57,14 +57,14 @@ class AddDrink extends Component {
             liquorVolume: "",
             selected: ""
         })
-        
+
     }
 
-    deleteDrinkLiquor = (id) => {
+    deleteDrinkLiquor = (name) => {
         const drinkLiquors = this.state.drinkLiquors.filter(liquor => {
             // if id is not equal to id return true and do not remove
             // if id is equal to id return false and remove from array
-            return liquor.id !== id
+            return liquor.name !== name
         });
         this.setState({
             drinkLiquors:
@@ -106,19 +106,19 @@ class AddDrink extends Component {
             price: 0
         })
             .catch(err => console.log(err)).then(
-        // may need to make this.setState a .then
-       
-        this.setState({
-            content: "",
-          
-            drinkLiquors: [],
-            selected: "",
-            name: ""
-            
-    
-    }))
-            
-            }
+                // may need to make this.setState a .then
+
+                this.setState({
+                    content: "",
+
+                    drinkLiquors: [],
+                    selected: "",
+                    name: ""
+
+
+                }))
+
+    }
 
     render() {
 
@@ -146,16 +146,16 @@ class AddDrink extends Component {
 
                         <Row>
                             <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
-                            onChange={this.changeSelected}
+                                onChange={this.changeSelected}
                             >
                                 <option></option>
                                 {this.state.allLiquors.map((Liquor, index) => (
                                     <option name={index}>{Liquor.name}</option>
                                 ))}
                             </Input>
-                       
-                            <Input 
-                                s={3} 
+
+                            <Input
+                                s={3}
                                 label="Volume"
                                 onChange={this.handleInputChange}
                                 value={this.state.liquorVolume}
@@ -163,7 +163,7 @@ class AddDrink extends Component {
                                 type="number"
                                 className="form-control"
                                 id="AddDrink"
-                                />
+                            />
                             <Button
                                 s={2}
                                 // disabled={!(this.liquorVolume)}
@@ -185,19 +185,19 @@ class AddDrink extends Component {
                             </Button>
                         </Row> */}
 
-                        <Row> 
-                        <div className="container center">
-                            <h5 className="center black-text">Ingredients</h5>
-                            <Liquors
-                                s={12}
-                                drinkLiquors = {this.state.drinkLiquors}
-                                
-                                deleteDrinkLiquor={this.deleteDrinkLiquor}
-                            />
-                        </div>
+                        <Row>
+                            <div className="container center">
+                                <h5 className="center black-text">Ingredients</h5>
+                                <Liquors
+                                    s={12}
+                                    drinkLiquors={this.state.drinkLiquors}
+
+                                    deleteDrinkLiquor={this.deleteDrinkLiquor}
+                                />
+                            </div>
                         </Row>
                         <Row>
-                        <Input
+                            <Input
                                 s={12}
                                 label="Preparation"
                                 onChange={this.handleInputChange}
@@ -219,9 +219,9 @@ class AddDrink extends Component {
                         </Row>
                     </form>
                 </div>
-                
+
             </div>
-            
+
         )
     }
 }

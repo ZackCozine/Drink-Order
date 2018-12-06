@@ -8,7 +8,7 @@ const Liquors = props => {
             return (
                 <div className="collection-item" >
                     {/* deleteDrinkLiquor({index}) */}
-                    <span onClick={() => { props.deleteDrinkLiquor(liquor.id) }}>{liquor.volume} oz : {liquor.name}</span>
+                    <span onClick={() => { props.deleteDrinkLiquor(liquor.name) }}>{liquor.volume} oz : {liquor.name}</span>
 
                 </div>
             )
