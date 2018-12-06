@@ -27,6 +27,7 @@ class EditLiquor extends Component {
   componentDidMount() {
     console.log("mount",this.props.auth.getProfile(this.loadLiquor))
     if (this.props.auth.userProfile) this.loadLiquor()
+    console.log(this.props.auth)
   }
 
   // Loads saved liquor from mongo database
