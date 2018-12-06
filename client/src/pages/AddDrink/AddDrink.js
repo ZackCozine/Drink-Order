@@ -53,7 +53,7 @@ class AddDrink extends Component {
     }
 
     deleteDrinkLiquor = (id) => {
-        const liquors = this.state.drinkLiquors.filter(liquor => {
+        const drinkLiquors = this.state.drinkLiquors.filter(liquor => {
             // if id is not equal to id return true and do not remove
             // if id is equal to id return false and remove from array
             return liquor.id !== id
@@ -62,7 +62,7 @@ class AddDrink extends Component {
             drinkLiquors:
                 //es6 shortening if key and value have save name
                 //otherwise looks like (liquors: liquors)
-                liquors
+                drinkLiquors
         })
     }
 
