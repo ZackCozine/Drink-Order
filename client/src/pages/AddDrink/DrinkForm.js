@@ -2,6 +2,7 @@ import React from "react";
 import "./DrinkForm.css";
 import { Button, Input, Row, } from 'react-materialize';
 // import AddLiquor from "./AddLiquor";
+import AddLiquor from "./AddDrink";
 
 
 const DrinkForm = props => (
@@ -19,33 +20,19 @@ const DrinkForm = props => (
                 className="form-control"
                 id="AddDrink"
             />
-            {/* <Input
-                s={12}
-                label="Liquor1"
-                onChange={props.handleInputChange}
-                value={props.liquor1}
-                name="liquor1"
-                type="text"
-                className="form-control"
-                id="AddDrink"
-            />
-            <Input
-                s={12}
-                label="Liquor2"
-                onChange={props.handleInputChange}
-                value={props.liquor2}
-                name="liquor2"
-                type="text"
-                className="form-control"
-                id="AddDrink"
-            /> */}
         </Row>
+
+        <div>
+            <AddLiquor s={12}
+                // drinkLiquors={props.drinkLiquors}
+            />
+        </div>
+
         <Row>
             <Button
                 waves='light'
-                // disabled={!(props.name && props.liquors && props.ingredients)}
                 onClick={props.handleSaveDrink}
-                className="SaveLiquor-button">
+                className="saveDrinkButton">
                 Submit
             </Button>
         </Row>

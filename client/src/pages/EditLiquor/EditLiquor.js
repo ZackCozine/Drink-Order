@@ -20,6 +20,7 @@ class EditLiquor extends Component {
 
   // Loads saved liquor from mongo database
   loadLiquor = () => {
+    console.log('loadLiquor');
     API.getLiquor()
       .then(res => {
         this.setState({ Liquor: res.data});

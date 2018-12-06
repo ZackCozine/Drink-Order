@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Liquors = ({ liquors, deleteLiquor }) => {
+const Liquors = props => {
 
-    const liquorList = liquors.length ? (
-        liquors.map(liquor => {
+    const liquorList = props.drinkLiquors.length ? (
+        props.drinkLiquors.map((liquor, index) => {
             return (
-                <div className="collection-item" key={liquor.id}>
-                    <span onClick={() => { deleteLiquor(liquor.id) }}>{liquor.content}</span>
+                <div className="collection-item" >
+                    <span onClick={() => { props.deleteDrinkLiquor({index}) }}>{liquor.name}</span>
+                    
                 </div>
             )
         })

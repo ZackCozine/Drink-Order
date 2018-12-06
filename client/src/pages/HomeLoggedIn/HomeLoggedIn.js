@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./HomeLoggedIn.css";
-// import {Button, Icon, Row, Collection, CollectionItem} from 'react-materialize';
+// import { Footer, NavTabs} from 'react-materialize';
 import NavTabs from "../../NavTabs/NavTabs"
 import Footer from "../../Footer"
 
@@ -11,15 +11,25 @@ export default class Home extends Component {
         const { isAuthenticated } = this.props.auth;
         
         return(
-           <div>
+           <body>
+            <header>   
             <NavTabs {...this.props} />
-
+            </header>
+            
+            <main>
+                
             <div class="container center">
                 <br /><br />
-                <img class="responsive-img" src="../../drinkorderlogo.png" />           
+                <img class="responsive-img" src="../../drinkorderlogo.png" />
+                        
             </div>
+            
+            </main>
+            
+            <footer>
             <Footer {...this.props}/>
-        </div>
+            </footer>
+        </body>
     
         )
     }
