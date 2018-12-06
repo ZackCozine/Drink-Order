@@ -14,7 +14,7 @@ export default class footer extends Component {
 
             <Footer className="brown darken-3 white-text">Copyright 2015 </Footer>
         )
-}
+    }
 }
 
 
