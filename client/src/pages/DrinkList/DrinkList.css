@@ -1,0 +1,11 @@
+Table {
+    background-color: white;
+}
+
+tr {
+    border-bottom: solid gray 1px;
+}
+
+.tableIndent {
+    padding-left: 20px;
+}
