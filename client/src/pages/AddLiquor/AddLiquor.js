@@ -14,6 +14,10 @@ class AddLiquor extends Component {
     userID: ""
   };
 
+  goTo(route) {
+    this.props.history.replace(`/${route}`)
+}
+
   // Sets a new search state based on the user input
   handleInputChange = event => {
     const { name, value } = event.target
@@ -33,8 +37,10 @@ class AddLiquor extends Component {
       bottleCost: this.state.bottleCost,
       userID: this.props.auth.userProfile.nickname
     })
+      .then(res => this.goTo('EditLiquor'))
       .catch(err => console.log(err));
     this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
+    
   };
 
   getProfile = (profile) => {

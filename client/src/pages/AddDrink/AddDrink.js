@@ -3,16 +3,17 @@ import { Button, Input, Row } from 'react-materialize';
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
 import Liquors from "./Liquors.js";
-import "./AddDrink.css";
+import "./DrinkForm.css";
+import Footer from "../../Footer/Footer";
 
 class AddDrink extends Component {
     state = {
         content: "",
         allLiquors: [],
         drinkLiquors: [],
-        selected: false,
+        selected: "",
         name: "",
-        liquorVolume: null
+        liquorVolume: "",
     }
 
     // When page is displayed, loadLiquor is called
@@ -36,7 +37,8 @@ class AddDrink extends Component {
 
     addDrinkLiquor = (event) => {
         event.preventDefault();
-        const liquorIndex = this.state.selected - 1;
+        const liquorIndex = this.state.selected-1; 
+        console.log("this.state.selected: ", this.state.selected);
         console.log('addDrinkLiquor: ', liquorIndex);
         console.log('liquorVolume: ', this.state.liquorVolume);
         if (liquorIndex >= 0) {
@@ -48,8 +50,14 @@ class AddDrink extends Component {
             // this.setState({drinkLiquors: [...this.state.drinkLiquors, newLiquor]});
             console.log(newLiquor, this.state.drinkLiquors);
             // this.setState({ liquorVolume: 0});
-            this.setState({ liquorVolume: null })
+            // this.setState({ liquorVolume: 1 })
         }
+        console.log("Liquor Volume: " + this.state.liquorVolume)
+        this.setState({
+            liquorVolume: "",
+            selected: ""
+        })
+        
     }
 
     deleteDrinkLiquor = (id) => {
@@ -87,20 +95,30 @@ class AddDrink extends Component {
             name: this.state.name,
             liquors: this.state.drinkLiquors,
             // liquors: formattedLiquor,
-            mixers: "tonic",
-            garnish: "olive",
+            // mixers: "tonic",
+            // garnish: "olive",
             // liquors: inputLiquor,
             // mixers: [],
             // garnish: [],
-            glassType: "coupe",
-            prep: "Shaken not stirred",
+            // glassType: "coupe",
+            prep: this.state.prep,
             cost: 5,
             price: 0
         })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err)).then(
         // may need to make this.setState a .then
-        this.setState({ name: "", drinkLiquors: [], selected: false });
-    };
+       
+        this.setState({
+            content: "",
+          
+            drinkLiquors: [],
+            selected: "",
+            name: ""
+            
+    
+    }))
+            
+            }
 
     render() {
 
@@ -111,14 +129,14 @@ class AddDrink extends Component {
                 <NavTabs {...this.props} />
                 <div>
                     <form className="container center">
-                        <img className="responsive-img" alt="Drink Order" src="../../drinkorderlogo.png" />
+                        {/* <img className="responsive-img" alt="Drink Order" src="../../drinkorderlogo.png" /> */}
                         <Row>
                             <h1>Create a Drink</h1>
                             <Input
                                 s={12}
                                 label="Name"
                                 onChange={this.handleInputChange}
-                                value={this.name}
+                                value={this.state.name}
                                 name="name"
                                 type="text"
                                 className="form-control"
@@ -127,42 +145,67 @@ class AddDrink extends Component {
                         </Row>
 
                         <Row>
-                            <Input s={6} type="select" label="Liquor" defaultValue=" "
-                                onChange={this.changeSelected}
+                            <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
+                            onChange={this.changeSelected}
                             >
                                 <option></option>
                                 {this.state.allLiquors.map((Liquor, index) => (
                                     <option name={index}>{Liquor.name}</option>
                                 ))}
                             </Input>
-
-                            <Input
-                                s={6}
+                       
+                            <Input 
+                                s={3} 
                                 label="Volume"
                                 onChange={this.handleInputChange}
-                                value={this.liquorVolume}
+                                value={this.state.liquorVolume}
                                 name="liquorVolume"
                                 type="number"
                                 className="form-control"
                                 id="AddDrink"
-                            />
+                                />
+                            <Button
+                                s={2}
+                                // disabled={!(this.liquorVolume)}
+                                floating large
+                                className="red"
+                                onClick={this.addDrinkLiquor}
+                                className="saveLiquorButton">
+                                +
+                            </Button>
                         </Row>
 
-                        <Row>
+                        {/* <Row>
                             <Button
                                 // disabled={!(this.liquorVolume)}
                                 waves='light'
                                 onClick={this.addDrinkLiquor}
                                 className="saveLiquorButton">
-                                Add Liquor
+                                Add Ingredient
                             </Button>
-                        </Row>
+                        </Row> */}
 
-                        <Row className="liquor-app container">
-                            <h6 className="center blue-text">Liquors</h6>
+                        <Row> 
+                        <div className="container center">
+                            <h5 className="center black-text">Ingredients</h5>
                             <Liquors
-                                drinkLiquors={this.state.drinkLiquors}
+                                s={12}
+                                drinkLiquors = {this.state.drinkLiquors}
+                                
                                 deleteDrinkLiquor={this.deleteDrinkLiquor}
+                            />
+                        </div>
+                        </Row>
+                        <Row>
+                        <Input
+                                s={12}
+                                label="Preparation"
+                                onChange={this.handleInputChange}
+                                value={this.prep}
+                                name="prep"
+                                type="text"
+                                className="form-control"
+                                id="AddDrink"
                             />
                         </Row>
 
@@ -176,7 +219,9 @@ class AddDrink extends Component {
                         </Row>
                     </form>
                 </div>
+                
             </div>
+            
         )
     }
 }

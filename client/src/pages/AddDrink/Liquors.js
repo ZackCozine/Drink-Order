@@ -7,14 +7,14 @@ const Liquors = props => {
         props.drinkLiquors.map((liquor) => {
             return (
                 <div className="collection-item" >
-                {/* deleteDrinkLiquor({index}) */}
-                    <span onClick={() => { props.deleteDrinkLiquor(liquor.id) }}>{liquor.name}</span>
+                    {/* deleteDrinkLiquor({index}) */}
+                    <span onClick={() => { props.deleteDrinkLiquor(liquor.id) }}>{liquor.volume} oz : {liquor.name}</span>
 
                 </div>
             )
         })
     ) : (
-            <p className="center">No liquors yet</p>
+            <p className="center">no ingredients yet</p>
         )
     return (
         <div className="liquors collection">
