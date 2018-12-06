@@ -15,9 +15,18 @@ class EditLiquor extends Component {
     userID: ""
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Comp did update", prevProps)
+    if (Array.empty(this.state.Liquor) && !prevProps.auth.userProfile && this.props.auth.userProfile) {
+      this.loadLiquor();
+      console.log(this.props.auth.userProfile)
+    }
+  }
+
   // When page is displayed, loadLiquor is called
   componentDidMount() {
-    this.loadLiquor();
+    console.log("mount",this.props.auth.getProfile(this.loadLiquor))
+    if (this.props.auth.userProfile) this.loadLiquor()
   }
 
   // Loads saved liquor from mongo database
@@ -30,9 +39,10 @@ class EditLiquor extends Component {
   // };
 
   // Loads saved liquor by user from mongo database 
-  loadLiquor = () => {
-    
-    const userId = this.props.auth.userProfile.sub
+  loadLiquor = (err, profile) => {
+    console.log("Profile:", profile.sub, err)
+    // const userId = this.props.auth.userProfile.sub
+    const userId = profile.sub
     
     API.getLiquorByUser(userId)
       .then(res => {
