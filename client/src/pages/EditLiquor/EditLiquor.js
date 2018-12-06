@@ -49,9 +49,8 @@ class EditLiquor extends Component {
 
   // Grabs the id of the chosen liquor from the button name and deletes it from the mongo database
   handleDeleteLiquor = event => {
-    event.preventDefault();
-
     const id = event.target.id;
+    console.log("handleDeleteLiquor: ", event.target.id)
     API.deleteLiquor(id)
       .then(res => this.loadLiquor())
       .catch(err => console.log(err));
