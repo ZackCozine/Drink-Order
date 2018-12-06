@@ -3,7 +3,7 @@ const liquorController = require("../../controllers/liquorController");
 
 // Matches with "/api/liquor"
 router.route("/")
-  .get(liquorController.findAll)
+  // .get(liquorController.findAll)
   .post(liquorController.create);
 
 // Matches with "/api/liquor/:id"

@@ -32,7 +32,7 @@ class EditLiquor extends Component {
   // Loads saved liquor by user from mongo database 
   loadLiquor = () => {
     
-    const userId = this.state.userID
+    const userId = this.props.auth.userProfile.sub
     
     API.getLiquorByUser(userId)
       .then(res => {
