@@ -17,7 +17,7 @@ class EditLiquor extends Component {
 
   // When page is displayed, loadLiquor is called
   componentDidMount() {
-    console.log("mount",this.props.auth.getProfile(this.loadLiquor))
+    console.log("mount",this.loadLiquor())
     // if (this.props.auth.userProfile) this.loadLiquor()
     console.log(this.props.auth)
   }
@@ -32,7 +32,10 @@ class EditLiquor extends Component {
   // };
 
   // Loads saved liquor by user from mongo database 
-  loadLiquor = (err, profile) => {
+  loadLiquor = () => {
+    this.props.auth.getProfile(this._loadLiquor)
+  }
+  _loadLiquor = (err, profile) => {
     console.log("Profile:", profile.nickname, err)
     // const userId = this.props.auth.userProfile.sub
     const userId = profile.nickname
@@ -66,7 +69,7 @@ class EditLiquor extends Component {
   // Grabs the user's updated liqour input from the state and saves it in the mongo database
   handleUpdateLiquor = event => {
     event.preventDefault();
-
+    console.log("Handling liquor update")
     const id = event.target.id;
     const index = event.target.name;
     let name = this.state.name? this.state.name: this.state.Liquor[index].name;
