@@ -8,9 +8,12 @@ export default {
     return axios.get(BASEURL + query);
   },
   // Gets all liquors
-  getLiquor: function() {
-    console.log('getLqiuor');
-    return axios.get("/api/liquors");
+  // getLiquor: function() {
+  //   return axios.get("/api/liquors");
+  // },
+  // Get all liquors by user
+  getLiquorByUser: function(userId) {
+    return axios.get("/api/liquors/byuser/" + userId);
   },
   // Updates the database with new info for a liquor
   updateLiquor: function(id, LiquorData) {
