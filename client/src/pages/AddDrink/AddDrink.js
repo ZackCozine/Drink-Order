@@ -5,6 +5,8 @@ import NavTabs from "../../NavTabs/NavTabs";
 import Liquors from "./Liquors.js";
 import "./AddDrink.css";
 import Footer from "../../Footer/Footer";
+import Profile from "../../Profile/Profile"
+// const { isAuthenticated } = this.props.auth;
 
 class AddDrink extends Component {
     state = {
@@ -14,6 +16,8 @@ class AddDrink extends Component {
         selected: "",
         name: "",
         liquorVolume: "",
+        prep: "",
+        userID: ""
     }
 
     // When page is displayed, loadLiquor is called
@@ -87,6 +91,7 @@ class AddDrink extends Component {
     handleSaveDrink = event => {
         event.preventDefault();
         console.log("handleSaveDrink");
+        console.log(this.state.auth)
         console.log(this.state.drinkLiquors);
         // let formattedLiquor = [];
         // for (let i = 0; i < this.state.drinkLiquors.length; i++) {
@@ -104,14 +109,15 @@ class AddDrink extends Component {
             // glassType: "coupe",
             prep: this.state.prep,
             cost: 5,
-            price: 0
+            price: 0,
+            userID: this.props.auth.userProfile.nickname
         })
             .catch(err => console.log(err)).then(
                 // may need to make this.setState a .then
 
                 this.setState({
                     content: "",
-
+                    prep: "",
                     drinkLiquors: [],
                     selected: "",
                     name: ""
@@ -128,6 +134,7 @@ class AddDrink extends Component {
         return (
             <div>
                 <NavTabs {...this.props} />
+                { isAuthenticated() && (<Profile {...this.props} />) }
                 <div>
                     <form className="container center">
                         {/* <img className="responsive-img" alt="Drink Order" src="../../drinkorderlogo.png" /> */}
@@ -146,12 +153,12 @@ class AddDrink extends Component {
                         </Row>
 
                         <Row>
-                            <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
-                                onChange={this.changeSelected}
+                            <Input s={6} type="select" label="Liquor" value = {this.state.selected}
+                            onChange={this.changeSelected}
                             >
-                                <option></option>
+                                <option value = "" name = ""></option>
                                 {this.state.allLiquors.map((Liquor, index) => (
-                                    <option name={index}>{Liquor.name}</option>
+                                    <option name={index} value = {index + 1}>{Liquor.name}</option>
                                 ))}
                             </Input>
 
@@ -218,9 +225,11 @@ class AddDrink extends Component {
                                 Submit
                             </Button>
                         </Row>
+                    
                     </form>
+                   
                 </div>
-
+              
             </div>
 
         )
