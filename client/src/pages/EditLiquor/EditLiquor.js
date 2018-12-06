@@ -15,18 +15,10 @@ class EditLiquor extends Component {
     userID: ""
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log("Comp did update", prevProps)
-  //   if (Array.empty(this.state.Liquor) && !prevProps.auth.userProfile && this.props.auth.userProfile) {
-  //     this.loadLiquor();
-  //     console.log(this.props.auth.userProfile)
-  //   }
-  // }
-
   // When page is displayed, loadLiquor is called
   componentDidMount() {
     console.log("mount",this.props.auth.getProfile(this.loadLiquor))
-    if (this.props.auth.userProfile) this.loadLiquor()
+    // if (this.props.auth.userProfile) this.loadLiquor()
     console.log(this.props.auth)
   }
 
