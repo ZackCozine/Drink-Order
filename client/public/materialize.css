@@ -2159,8 +2159,18 @@ html {
  */
 body {
   margin: 0;
+  display: flex !important;
+  min-height: 100vh !important;
+  flex-direction: column !important; 
+  
 }
-
+main {
+  
+  flex: 1 0 auto !important;
+}
+.navbar-fixed {
+  margin-bottom: 30px;
+}
 /* HTML5 display definitions
    ========================================================================== */
 /**
@@ -2867,12 +2877,13 @@ ul.staggered-list li {
 
 footer.page-footer {
   padding-top: 20px;
-  background-color: #ee6e73;
+  background-color: #4e342e;
+  flex-shrink: 0;
 }
 
 footer.page-footer .footer-copyright {
   overflow: hidden;
-  min-height: 50px;
+  min-height: 25px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;

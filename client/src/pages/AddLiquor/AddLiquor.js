@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LiquorForm from "./LiquorForm.js";
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
+import AutoSelect from "../../utils/Select"
 
 class AddLiquor extends Component {
   state = {
@@ -40,6 +41,8 @@ class AddLiquor extends Component {
 
       <div>
         <NavTabs {...this.props} />
+      {
+        isAuthenticated() && (
         <div>
           <LiquorForm
             name={this.state.name}
@@ -50,6 +53,8 @@ class AddLiquor extends Component {
             handleInputChange={this.handleInputChange}
           />
         </div>
+        )  
+      }
       </div>
     )
   }
