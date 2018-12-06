@@ -3,6 +3,7 @@ const db = require("../models");
 // Defines methods for the liquorController
 module.exports = {
   findAll: function(req, res) {
+    console.log('liquorController');
     db.Liquor
       .find(req.query)
       .sort({ type: 1, name: 1 })
