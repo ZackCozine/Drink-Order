@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Creates schema for mango database
+//Creates schema for mongo database
 const liquorSchema = new Schema({
   name: { type: String, required: true },
   type: String,
