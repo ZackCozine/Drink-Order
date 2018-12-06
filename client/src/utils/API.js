@@ -9,8 +9,11 @@ export default {
   },
   // Gets all liquors
   getLiquor: function() {
-    console.log('getLqiuor');
     return axios.get("/api/liquors");
+  },
+  // Get all liquors by user
+  getLiquorByUser: function(userId) {
+    return axios.get("/api/liquors/byuser/" + userId);
   },
   // Updates the database with new info for a liquor
   updateLiquor: function(id, LiquorData) {
@@ -18,6 +21,7 @@ export default {
   },
   // Deletes the liquor with the given id
   deleteLiquor: function(id) {
+    console.log("id is: ",id)
     return axios.delete("/api/liquors/" + id);
   },
   // Saves a liquor to the database
@@ -36,7 +40,9 @@ export default {
   },
   // Deletes the drink with the given id
   deleteRecipe: function (id) {
+    console.log("Delete route hit");
     return axios.delete("/api/recipes/" + id);
+    
   },
   // Saves a drink to the database
   saveDrink: function (DrinkData) {
