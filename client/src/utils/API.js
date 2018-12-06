@@ -9,6 +9,7 @@ export default {
   },
   // Gets all liquors
   getLiquor: function() {
+    console.log('getLqiuor');
     return axios.get("/api/liquors");
   },
   // Updates the database with new info for a liquor

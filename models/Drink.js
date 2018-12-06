@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Creates schema for mango database
-// const recipeLiquorSchema = new Schema({ 
-//   name: String,
-//   volume: Number
-//  });
+// Creates schema for mango database
+const recipeLiquorSchema = new Schema({ 
+  name: String,
+  volume: Number
+ });
 
 //  const mixerSchema = new Schema({ 
 //   name: String,
@@ -19,9 +19,9 @@ const Schema = mongoose.Schema;
 
 // const recipeSchema = new Schema({
 //   name: { type: String, required: true },
-//   liquor: [recipeLiquorSchema],
+//   liquors: [recipeLiquorSchema],
 //   mixers: [mixerSchema],
-//   granish: [garnishSchema],
+//   garnishes: [garnishSchema],
 //   glassType: String,
 //   prep: String,
 //   cost: Number,
@@ -30,9 +30,9 @@ const Schema = mongoose.Schema;
 
 const drinkSchema = new Schema({
   name: { type: String, required: true },
-  liquor: String,
+  liquors: [recipeLiquorSchema],
   mixers: String,
-  granish: String,
+  garnishes: String,
   glassType: String,
   prep: String,
   cost: Number,
