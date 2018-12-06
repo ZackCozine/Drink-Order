@@ -16,23 +16,23 @@ class AddDrink extends Component {
         liquorVolume: "",
     }
 
-     // When page is displayed, loadLiquor is called
-     componentDidMount() {
+    // When page is displayed, loadLiquor is called
+    componentDidMount() {
         this.loadLiquor();
     }
 
     // Loads saved liquor from mongo database
     loadLiquor = () => {
         API.getLiquor()
-        .then(res => {
-            this.setState({ allLiquors: res.data});
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                this.setState({ allLiquors: res.data });
+            })
+            .catch(err => console.log(err));
     };
 
     changeSelected = event => {
         console.log('changeSelected: ', event.target.selectedIndex);
-        this.setState({selected:event.target.selectedIndex})
+        this.setState({ selected: event.target.selectedIndex })
     }
 
     addDrinkLiquor = (event) => {
@@ -42,11 +42,11 @@ class AddDrink extends Component {
         console.log('addDrinkLiquor: ', liquorIndex);
         console.log('liquorVolume: ', this.state.liquorVolume);
         if (liquorIndex >= 0) {
-        
+
             const newLiquor = this.state.allLiquors[liquorIndex].name;
             let updated = this.state.drinkLiquors.slice();
-            updated.push({name:newLiquor, volume:this.state.liquorVolume});
-            this.setState({drinkLiquors:updated});
+            updated.push({ name: newLiquor, volume: this.state.liquorVolume });
+            this.setState({ drinkLiquors: updated });
             // this.setState({drinkLiquors: [...this.state.drinkLiquors, newLiquor]});
             console.log(newLiquor, this.state.drinkLiquors);
             // this.setState({ liquorVolume: 0});
@@ -59,17 +59,18 @@ class AddDrink extends Component {
         })
         
     }
-   
+
     deleteDrinkLiquor = (id) => {
-        const liquors = this.state.drinkLiquors.filter(liquor => {
+        const drinkLiquors = this.state.drinkLiquors.filter(liquor => {
             // if id is not equal to id return true and do not remove
             // if id is equal to id return false and remove from array
             return liquor.id !== id
         });
-        this.setState({drinkLiquors:
-            //es6 shortening if key and value have save name
-            //otherwise looks like (liquors: liquors)
-            liquors
+        this.setState({
+            drinkLiquors:
+                //es6 shortening if key and value have save name
+                //otherwise looks like (liquors: liquors)
+                drinkLiquors
         })
     }
 
@@ -142,7 +143,7 @@ class AddDrink extends Component {
                                 id="AddDrink"
                             />
                         </Row>
-                    
+
                         <Row>
                             <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
                             onChange={this.changeSelected}
