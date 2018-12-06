@@ -41,6 +41,7 @@ const RecipeForm = props => (
                 className="SaveLiquor-button">Submit</Button>
         </Row>
     </form>
+    
 );
 
 export default RecipeForm;

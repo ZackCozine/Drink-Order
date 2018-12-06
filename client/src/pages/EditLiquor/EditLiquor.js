@@ -3,6 +3,7 @@ import LiquorList from "./LiquorList.js";
 import LiquorHeader from "./LiquorHeader.js";
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
+import Profile from "../../Profile/Profile"
 
 class EditLiquor extends Component {
   state = {
@@ -10,18 +11,33 @@ class EditLiquor extends Component {
     name: "",
     type: "",
     bottleVolume: "",
-    bottleCost: ""
+    bottleCost: "",
+    userID: ""
   };
 
   // When page is displayed, loadLiquor is called
   componentDidMount() {
-    this.loadLiquor();
+    console.log("mount",this.props.auth.getProfile(this.loadLiquor))
+    // if (this.props.auth.userProfile) this.loadLiquor()
+    console.log(this.props.auth)
   }
 
   // Loads saved liquor from mongo database
-  loadLiquor = () => {
-    console.log('loadLiquor');
-    API.getLiquor()
+  // loadLiquor = () => {
+  //   API.getLiquor()
+  //     .then(res => {
+  //       this.setState({ Liquor: res.data});
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  // Loads saved liquor by user from mongo database 
+  loadLiquor = (err, profile) => {
+    console.log("Profile:", profile.nickname, err)
+    // const userId = this.props.auth.userProfile.sub
+    const userId = profile.nickname
+    
+    API.getLiquorByUser(userId)
       .then(res => {
         this.setState({ Liquor: res.data});
       })
@@ -92,9 +108,11 @@ class EditLiquor extends Component {
             handleInputChange={this.handleInputChange}
             handleDeleteLiquor={this.handleDeleteLiquor}
             handleUpdateLiquor={this.handleUpdateLiquor}
+            userID = {this.state.userID}
           />
           )
         }
+        { isAuthenticated() && (<Profile {...this.props} />) }
       </div>
     );
   }
