@@ -145,12 +145,12 @@ class AddDrink extends Component {
                         </Row>
 
                         <Row>
-                            <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
+                            <Input s={6} type="select" label="Liquor" value = {this.state.selected}
                             onChange={this.changeSelected}
                             >
-                                <option></option>
+                                <option value = "" name = ""></option>
                                 {this.state.allLiquors.map((Liquor, index) => (
-                                    <option name={index}>{Liquor.name}</option>
+                                    <option name={index} value = {index + 1}>{Liquor.name}</option>
                                 ))}
                             </Input>
                        
