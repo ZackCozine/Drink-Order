@@ -3,7 +3,7 @@ import { Button, Input, Row } from 'react-materialize';
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
 import Liquors from "./Liquors.js";
-import "./DrinkForm.css";
+import "./AddDrink.css";
 import Footer from "../../Footer/Footer";
 
 class AddDrink extends Component {
