@@ -21,7 +21,8 @@ const LiquorList = props => (
                             <td className="tableIndent">{Liquor.name}</td>
                             <td>{Liquor.type}</td>
                             <td>{Liquor.bottleVolume}</td>
-                            <td>{Liquor.bottleCost}</td>
+                            <td>{Liquor.bottleCost}</td>     
+                            {/* <td>{Liquor.userID}</td> */}
                             <td className="editButton">
                                 <Modal
                                     header='Edit Liquor'
@@ -78,8 +79,9 @@ const LiquorList = props => (
                             </td>
                             <td className="deleteButton">
                                 <Button floating className="red" onClick={props.handleDeleteLiquor}
-                                 id={Liquor._id}> 
-                                 X
+                                 id={Liquor._id} name={index}>
+                                <i className="material-icons">clear</i>
+                                 
                                 </Button>
                             </td>
                         </tr>

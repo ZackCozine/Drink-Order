@@ -11,9 +11,9 @@ class AddDrink extends Component {
         content: "",
         allLiquors: [],
         drinkLiquors: [],
-        selected: false,
+        selected: "",
         name: "",
-        liquorVolume: null
+        liquorVolume: "",
     }
 
      // When page is displayed, loadLiquor is called
@@ -38,6 +38,7 @@ class AddDrink extends Component {
     addDrinkLiquor = (event) => {
         event.preventDefault();
         const liquorIndex = this.state.selected-1; 
+        console.log("this.state.selected: ", this.state.selected);
         console.log('addDrinkLiquor: ', liquorIndex);
         console.log('liquorVolume: ', this.state.liquorVolume);
         if (liquorIndex >= 0) {
@@ -49,8 +50,14 @@ class AddDrink extends Component {
             // this.setState({drinkLiquors: [...this.state.drinkLiquors, newLiquor]});
             console.log(newLiquor, this.state.drinkLiquors);
             // this.setState({ liquorVolume: 0});
-            this.setState({ liquorVolume: null })
+            // this.setState({ liquorVolume: 1 })
         }
+        console.log("Liquor Volume: " + this.state.liquorVolume)
+        this.setState({
+            liquorVolume: "",
+            selected: ""
+        })
+        
     }
    
     deleteDrinkLiquor = (id) => {
@@ -97,10 +104,20 @@ class AddDrink extends Component {
             cost: 5,
             price: 0
         })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err)).then(
         // may need to make this.setState a .then
-        this.setState({ name: "", drinkLiquors: [], selected: false });
-    };
+       
+        this.setState({
+            content: "",
+          
+            drinkLiquors: [],
+            selected: "",
+            name: ""
+            
+    
+    }))
+            
+            }
 
     render() {
 
@@ -118,7 +135,7 @@ class AddDrink extends Component {
                                 s={12}
                                 label="Name"
                                 onChange={this.handleInputChange}
-                                value={this.name}
+                                value={this.state.name}
                                 name="name"
                                 type="text"
                                 className="form-control"
@@ -127,7 +144,7 @@ class AddDrink extends Component {
                         </Row>
                     
                         <Row>
-                            <Input s={7} type="select" label="Ingredient" defaultValue=" "
+                            <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
                             onChange={this.changeSelected}
                             >
                                 <option></option>
@@ -140,7 +157,7 @@ class AddDrink extends Component {
                                 s={3} 
                                 label="Volume"
                                 onChange={this.handleInputChange}
-                                value={this.liquorVolume}
+                                value={this.state.liquorVolume}
                                 name="liquorVolume"
                                 type="number"
                                 className="form-control"
