@@ -3,7 +3,6 @@ import LiquorList from "./LiquorList.js";
 import LiquorHeader from "./LiquorHeader.js";
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
-import Profile from "../../Profile/Profile"
 
 class EditLiquor extends Component {
   state = {
@@ -11,36 +10,18 @@ class EditLiquor extends Component {
     name: "",
     type: "",
     bottleVolume: "",
-    bottleCost: "",
-    userID: ""
+    bottleCost: ""
   };
 
   // When page is displayed, loadLiquor is called
   componentDidMount() {
-    console.log("mount",this.loadLiquor())
-    // if (this.props.auth.userProfile) this.loadLiquor()
-    console.log(this.props.auth)
+    this.loadLiquor();
   }
 
   // Loads saved liquor from mongo database
-  // loadLiquor = () => {
-  //   API.getLiquor()
-  //     .then(res => {
-  //       this.setState({ Liquor: res.data});
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  // Loads saved liquor by user from mongo database 
   loadLiquor = () => {
-    this.props.auth.getProfile(this._loadLiquor)
-  }
-  _loadLiquor = (err, profile) => {
-    console.log("Profile:", profile.nickname, err)
-    // const userId = this.props.auth.userProfile.sub
-    const userId = profile.nickname
-    
-    API.getLiquorByUser(userId)
+    console.log('loadLiquor');
+    API.getLiquor()
       .then(res => {
         this.setState({ Liquor: res.data});
       })
@@ -49,8 +30,9 @@ class EditLiquor extends Component {
 
   // Grabs the id of the chosen liquor from the button name and deletes it from the mongo database
   handleDeleteLiquor = event => {
+    event.preventDefault();
+
     const id = event.target.id;
-    console.log("handleDeleteLiquor: ", event.target.id)
     API.deleteLiquor(id)
       .then(res => this.loadLiquor())
       .catch(err => console.log(err));
@@ -68,7 +50,7 @@ class EditLiquor extends Component {
   // Grabs the user's updated liqour input from the state and saves it in the mongo database
   handleUpdateLiquor = event => {
     event.preventDefault();
-    console.log("Handling liquor update")
+
     const id = event.target.id;
     const index = event.target.name;
     let name = this.state.name? this.state.name: this.state.Liquor[index].name;
@@ -110,11 +92,9 @@ class EditLiquor extends Component {
             handleInputChange={this.handleInputChange}
             handleDeleteLiquor={this.handleDeleteLiquor}
             handleUpdateLiquor={this.handleUpdateLiquor}
-            userID = {this.state.userID}
           />
           )
         }
-        { isAuthenticated() && (<Profile {...this.props} />) }
       </div>
     );
   }
