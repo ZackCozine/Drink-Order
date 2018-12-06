@@ -3,7 +3,7 @@ import { Button, Input, Row } from 'react-materialize';
 import API from "../../utils/API";
 import NavTabs from "../../NavTabs/NavTabs";
 import Liquors from "./Liquors.js";
-import "./DrinkForm.css";
+import "./AddDrink.css";
 
 class AddDrink extends Component {
     state = {
@@ -78,6 +78,25 @@ class AddDrink extends Component {
         event.preventDefault();
         console.log("handleSaveDrink");
         console.log(this.state.drinkLiquors);
+
+        const ml_oz = 0.033814;
+        let cost = 0;
+        
+        const costArray = this.state.drinkLiquors.map(tempDL => {
+            const match = this.state.allLiquors.find((tempAL) =>
+                tempDL.name == tempAL.name);
+                console.log('match: ', match);
+                return match.bottleCost / (match.bottleVolume * ml_oz) * tempDL.volume;
+        })
+
+        for (let i = 0; i < costArray.length; i++) {
+            cost += costArray[i];
+        }
+        cost = cost.toFixed(2);
+        const price = (cost * 5).toFixed(2);
+
+        console.log('costArray: ', costArray);
+
         // let formattedLiquor = [];
         // for (let i = 0; i < this.state.drinkLiquors.length; i++) {
         //     formattedLiquor.push({name: this.state.drinkLiquors[i].name, volume: 2});
@@ -93,8 +112,8 @@ class AddDrink extends Component {
             // garnish: [],
             glassType: "coupe",
             prep: "Shaken not stirred",
-            cost: 5,
-            price: 0
+            cost: cost,
+            price: price
         })
             .catch(err => console.log(err));
         // may need to make this.setState a .then
