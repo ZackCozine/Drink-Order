@@ -31,9 +31,9 @@ const recipeLiquorSchema = new Schema({
 const drinkSchema = new Schema({
   name: { type: String, required: true },
   liquors: [recipeLiquorSchema],
-  mixers: String,
-  garnishes: String,
-  glassType: String,
+  // mixers: String,
+  // garnishes: String,
+  // glassType: String,
   prep: String,
   cost: Number,
   price: Number,

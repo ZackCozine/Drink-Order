@@ -138,7 +138,13 @@ class AddDrink extends Component {
             price: price,
             // glassType: "coupe",
             prep: this.state.prep,
+
+            cost: 5,
+            price: 0,
+           
+
             userID: this.props.auth.userProfile.nickname
+
         })
             .catch(err => console.log(err)).then(
                 // may need to make this.setState a .then
@@ -236,7 +242,7 @@ class AddDrink extends Component {
                                 s={12}
                                 label="Preparation"
                                 onChange={this.handleInputChange}
-                                value={this.prep}
+                                value={this.state.prep}
                                 name="prep"
                                 type="text"
                                 className="form-control"
