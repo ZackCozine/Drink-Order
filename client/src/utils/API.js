@@ -31,17 +31,17 @@ export default {
 
   // gets all drinks
   getRecipe: function () {
-    return axios.get("/api/recipes");
+    return axios.get("/api/drinks");
   },
   // Gets the drink with the given id
   updateRecipe: function (id, DrinkData) {
     // console.log("updateLiquor");
-    return axios.put("/api/recipes/" + id, DrinkData);
+    return axios.put("/api/drinks/" + id, DrinkData);
   },
   // Deletes the drink with the given id
-  deleteRecipe: function (id) {
+  deleteDrink: function (id) {
     console.log("Delete route hit");
-    return axios.delete("/api/recipes/" + id);
+    return axios.delete("/api/drinks/" + id);
     
   },
   // Saves a drink to the database
