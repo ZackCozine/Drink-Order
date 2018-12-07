@@ -34,13 +34,13 @@ export default {
     return axios.get("/api/drinks");
   },
   // Gets the drink with the given id
-  updateRecipe: function (id, DrinkData) {
+  updateDrink: function (id, DrinkData) {
     // console.log("updateLiquor");
     return axios.put("/api/drinks/" + id, DrinkData);
   },
   // Deletes the drink with the given id
   deleteDrink: function (id) {
-    console.log("Delete route hit");
+    console.log("Delete route hit: ", id);
     return axios.delete("/api/drinks/" + id);
     
   },

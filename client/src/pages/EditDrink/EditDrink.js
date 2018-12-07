@@ -9,10 +9,10 @@ class EditDrink extends Component {
   state = {
     Drink: [],
     name: "",
-    type: "",
-    bottleVolume: "",
-    bottleCost: "",
-    userID: ""
+    liquors: [],
+    prep: "",
+    cost: "",
+    price: ""
   };
 
   // When page is displayed, loadDrink is called
@@ -69,19 +69,19 @@ class EditDrink extends Component {
   // Grabs the user's updated drink input from the state and saves it in the mongo database
   handleUpdateDrink = event => {
     event.preventDefault();
-    console.log("Handling Drink update")
+    console.log("Handling Drink update: ", event.target.id);
     const id = event.target.id;
     const index = event.target.name;
     let name = this.state.name? this.state.name: this.state.Drink[index].name;
-    let type = this.state.type? this.state.type: this.state.Drink[index].type;
-    let bottleVolume = this.state.bottleVolume? this.state.bottleVolume: this.state.Drink[index].bottleVolume;
-    let bottleCost = this.state.bottleCost? this.state.bottleCost: this.state.Drink[index].bottleCost;
+    let prep = this.state.prep? this.state.prep: this.state.Drink[index].prep;
+    let cost = this.state.cost? this.state.cost: this.state.Drink[index].cost;
+    let price = this.state.price? this.state.price: this.state.Drink[index].price;
     
     API.updateDrink(id,{
       name: name,
-      type: type,
-      bottleVolume: bottleVolume,
-      bottleCost: bottleCost
+      prep: prep,
+      cost: cost,
+      price: price
     })
       .then(res => this.loadDrink())
       .catch(err => console.log(err));

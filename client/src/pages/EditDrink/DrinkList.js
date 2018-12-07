@@ -8,9 +8,9 @@ const DrinkList = props => (
                 <thead>
                     <tr>
                         <th data-field="name" className="tableIndent">Name</th>
-                        <th data-field="type">Type</th>
+                        {/* <th data-field="type">Type</th>
                         <th data-field="volume">Volume</th>
-                        <th data-field="cost">Cost</th>
+                        <th data-field="cost">Cost</th> */}
                         <th data-field="edit"></th>
                         <th data-field="delete"></th>
                     </tr>
@@ -19,15 +19,15 @@ const DrinkList = props => (
                     {props.Drink.map((Drink, index) => (
                         <tr key={Drink._id}>
                             <td className="tableIndent">{Drink.name}</td>
-                            <td>{Drink.type}</td>
+                            {/* <td>{Drink.type}</td>
                             <td>{Drink.bottleVolume}</td>
                             <td>{Drink.bottleCost}</td>     
-                            {/* <td>{Drink.userID}</td> */}
+                            <td>{Drink.userID}</td> */}
                             <td className="editButton">
                                 <Modal
                                     header='Edit Drink'
                                     trigger={<Button floating className="light-green"><i className="material-icons">
-                                    create
+                                    list
                                     </i></Button>}>
                                     
                                     <Row>
@@ -40,29 +40,40 @@ const DrinkList = props => (
                                             className="form-control"
                                             id="updateDrink"
                                         />
+                                        {props.Drink[index].liquors.map((liquor) => (
+                                            <Input s={12} 
+                                                label= "Ingredients" 
+                                                onChange={props.handleInputChange}
+                                                defaultValue={liquor.name}
+                                                name="ingredients"
+                                                type="text"
+                                                className="form-control"
+                                                id="updateDrink"
+                                            />
+                                        ))}
                                         <Input s={12} 
-                                            label= "Type of Drink" 
+                                            label= "Preparation" 
                                             onChange={props.handleInputChange}
-                                            defaultValue={Drink.type}
-                                            name="type"
-                                            type="text"
-                                            className="form-control"
-                                            id="updateDrink"
-                                        />
-                                        <Input s={12} 
-                                            label= "Bottle Volume (size)" 
-                                            onChange={props.handleInputChange}
-                                            defaultValue={Drink.bottleVolume}
-                                            name="bottleVolume"
+                                            defaultValue={Drink.prep}
+                                            name="preparation"
                                             type="text"
                                             className="form-control"
                                             id="updateDrink"
                                         />
                                         <Input s={12} label= 
-                                            "Bottle Cost" 
+                                            "Cost" 
                                             onChange={props.handleInputChange}
-                                            defaultValue={Drink.bottleCost}
-                                            name="bottleCost"
+                                            defaultValue={Drink.cost}
+                                            name="cost"
+                                            type="text"
+                                            className="form-control"
+                                            id="updateDrink"
+                                        />
+                                        <Input s={12} label= 
+                                            "Price" 
+                                            onChange={props.handleInputChange}
+                                            defaultValue={Drink.price}
+                                            name="price"
                                             type="text"
                                             className="form-control"
                                             id="updateDrink"
@@ -79,8 +90,8 @@ const DrinkList = props => (
                             </td>
                             <td className="deleteButton">
                                 <Button floating className="red" onClick={props.handleDeleteDrink}
-                                 id={Drink._id} name={index}>
-                                <i id={Drink._id} className="material-icons">clear</i>
+                                 id={Drink._id} name={index}>X
+                                {/* <i className="material-icons">clear</i> */}
                                  
                                 </Button>
                             </td>
