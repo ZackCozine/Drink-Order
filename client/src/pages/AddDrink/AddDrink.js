@@ -20,6 +20,10 @@ class AddDrink extends Component {
         userID: ""
     }
 
+    goTo(route) {
+        this.props.history.replace(`/${route}`)
+    }
+
     // When page is displayed, loadLiquor is called
     componentDidMount() {
         console.log("mount", this.loadLiquor());
@@ -138,9 +142,16 @@ class AddDrink extends Component {
             price: price,
             // glassType: "coupe",
             prep: this.state.prep,
+
+            cost: 5,
+            price: 0,
+           
+
             userID: this.props.auth.userProfile.nickname
+
         })
-            .catch(err => console.log(err)).then(
+            .then(res => this.goTo("EditDrink"))
+            .catch(err => console.log(err));
                 // may need to make this.setState a .then
 
                 this.setState({
@@ -151,7 +162,7 @@ class AddDrink extends Component {
                     name: ""
 
 
-                }))
+                })
 
     }
 
@@ -236,7 +247,7 @@ class AddDrink extends Component {
                                 s={12}
                                 label="Preparation"
                                 onChange={this.handleInputChange}
-                                value={this.prep}
+                                value={this.state.prep}
                                 name="prep"
                                 type="text"
                                 className="form-control"

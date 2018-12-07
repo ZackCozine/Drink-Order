@@ -31,7 +31,7 @@ export default {
 
   // gets all drinks
   getRecipe: function () {
-    return axios.get("/api/recipes");
+    return axios.get("/api/drinks");
   },
   // Gets the drink with the given id
   updateDrink: function (id, DrinkData) {
