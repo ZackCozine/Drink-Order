@@ -80,7 +80,7 @@ const DrinkList = props => (
                             <td className="deleteButton">
                                 <Button floating className="red" onClick={props.handleDeleteDrink}
                                  id={Drink._id} name={index}>
-                                <i className="material-icons">clear</i>
+                                <i id={Drink._id} className="material-icons">clear</i>
                                  
                                 </Button>
                             </td>
