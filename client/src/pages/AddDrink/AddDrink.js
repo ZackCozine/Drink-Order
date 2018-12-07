@@ -142,9 +142,6 @@ class AddDrink extends Component {
             price: price,
             // glassType: "coupe",
             prep: this.state.prep,
-
-            cost: 5,
-            price: 0,
            
 
             userID: this.props.auth.userProfile.nickname
