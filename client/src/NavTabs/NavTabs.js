@@ -60,7 +60,7 @@ export default class NavTabs extends Component {
                         isAuthenticated() && (
                             <NavItem
                                 onClick={this.goTo.bind(this, 'EditDrink')}
-                                className="nav-link">Edit Drink
+                                className="nav-link">Drinks
                             </NavItem>
                         )
                     }
@@ -76,14 +76,7 @@ export default class NavTabs extends Component {
 
                     {/* Drink list button */}
 
-                    {
-                        isAuthenticated() && (
-                            <NavItem
-                                onClick={this.goTo.bind(this, 'AddDrink')}
-                                className="nav-link drinkIcon">Drinks
-                            </NavItem>
-                        )
-                    }
+                   
                 </Navbar>
             // </div>
         )

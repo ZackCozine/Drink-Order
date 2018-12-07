@@ -20,6 +20,10 @@ class AddDrink extends Component {
         userID: ""
     }
 
+    goTo(route) {
+        this.props.history.replace(`/${route}`)
+    }
+
     // When page is displayed, loadLiquor is called
     componentDidMount() {
         console.log("mount", this.loadLiquor());
@@ -146,7 +150,8 @@ class AddDrink extends Component {
             userID: this.props.auth.userProfile.nickname
 
         })
-            .catch(err => console.log(err)).then(
+            .then(res => this.goTo("EditDrink"))
+            .catch(err => console.log(err));
                 // may need to make this.setState a .then
 
                 this.setState({
@@ -157,7 +162,7 @@ class AddDrink extends Component {
                     name: ""
 
 
-                }))
+                })
 
     }
 
