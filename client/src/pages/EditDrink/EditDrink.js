@@ -1,141 +1,124 @@
 import React, { Component } from "react";
-import AlcoholInputs from "./AlcoholInputs";
-import { } from 'react-materialize';
-import history from "../../history"
+import DrinkList from "./DrinkList.js";
+import DrinkHeader from "./DrinkHeader.js";
 import API from "../../utils/API";
-import { Button, Input, Row, MediaBox } from 'react-materialize';
 import NavTabs from "../../NavTabs/NavTabs";
+import Profile from "../../Profile/Profile"
 
 class EditDrink extends Component {
+  state = {
+    Drink: [],
+    name: "",
+    type: "",
+    bottleVolume: "",
+    bottleCost: "",
+    userID: ""
+  };
 
-    state = {
-        alcohols: [
-            // {id: 1, content: 'gin'},
-            // {id: 2, content: 'tonic'}
-        ]
-    }
-    handleChange = (e) => {
-        this.setState({
-            content: e.target.value
-        })
-    }
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.addAlc(this.state);
-        this.setState({
-            content: ''
-        })
-    }
-    deleteAlc = (id) => {
-        const alcohols = this.state.alcohols.filter(alcohol => {
-            return alcohol.id !== id
-        });
-        this.setState({
-            alcohols
-        })
-    }
-    addAlc = (alcohol) => {
-        alcohol.id = Math.random();
-        let alcohols = [...this.state.alcohols, alcohol];
-        this.setState({
-            alcohols
-        })
-    }
-    render() {
-        return (
-            <div>
-                <div className="Alcohol container">
-                    <h1 className="center blue-text">Alcohols</h1>
-                    <AlcoholInputs alcohols={this.state.alcohols} deleteAlc={this.deleteAlc} />
-                </div>
-                <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Add new ingredient: </label>
-                        <input type="text" onChange={this.handleChange} value={this.state.content} />
-                    </form>
-                </div>
-            </div>
-        );
+  // When page is displayed, loadDrink is called
+  componentDidMount() {
+    console.log("mount",this.loadDrink())
+    // if (this.props.auth.userProfile) this.loadDrink()
+    console.log(this.props.auth)
+  }
 
-    }
+  // Loads saved Drink from mongo database
+  // loadDrink = () => {
+  //   API.getDrink()
+  //     .then(res => {
+  //       this.setState({ Drink: res.data});
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  // Loads saved Drink by user from mongo database 
+  loadDrink = () => {
+    this.props.auth.getProfile(this._loadDrink)
+  }
+  _loadDrink = (err, profile) => {
+    console.log("Profile:", profile.nickname, err)
+    // const userId = this.props.auth.userProfile.sub
+    const userId = profile.nickname
+    
+    API.getDrinkByUser(userId)
+      .then(res => {
+        console.log('loadDrink: ', res.data);
+        this.setState({ Drink: res.data});
+      })
+      .catch(err => console.log(err));
+  };
+
+  // Grabs the id of the chosen Drink from the button name and deletes it from the mongo database
+  handleDeleteDrink = event => {
+    const id = event.target.id;
+    console.log("handleDeleteDrink: ", event.target.id)
+    API.deleteDrink(id)
+      .then(res => this.loadDrink())
+      .catch(err => console.log(err));
+  };
+
+   // Sets a new search state based on the user input
+   handleInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  // Grabs the user's updated drink input from the state and saves it in the mongo database
+  handleUpdateDrink = event => {
+    event.preventDefault();
+    console.log("Handling Drink update")
+    const id = event.target.id;
+    const index = event.target.name;
+    let name = this.state.name? this.state.name: this.state.Drink[index].name;
+    let type = this.state.type? this.state.type: this.state.Drink[index].type;
+    let bottleVolume = this.state.bottleVolume? this.state.bottleVolume: this.state.Drink[index].bottleVolume;
+    let bottleCost = this.state.bottleCost? this.state.bottleCost: this.state.Drink[index].bottleCost;
+    
+    API.updateDrink(id,{
+      name: name,
+      type: type,
+      bottleVolume: bottleVolume,
+      bottleCost: bottleCost
+    })
+      .then(res => this.loadDrink())
+      .catch(err => console.log(err));
+      this.setState({ name: "", type: "", bottleVolume: "", bottleCost: "" })
+  };
+
+  render() {
+
+    const { isAuthenticated } = this.props.auth;
+
+    return (
+      <div>
+        <NavTabs {...this.props} />
+        {
+          isAuthenticated() && (
+          <DrinkHeader/>
+          )
+        }
+        {
+          isAuthenticated() && (
+          <DrinkList 
+            name={this.state.name}
+            type={this.state.type}
+            bottleVolume={this.state.bottleVolume}
+            bottleCost={this.state.bottleCost}
+            Drink={this.state.Drink}
+            handleInputChange={this.handleInputChange}
+            handleDeleteDrink={this.handleDeleteDrink}
+            handleUpdateDrink={this.handleUpdateDrink}
+            userID = {this.state.userID}
+          />
+          )
+        }
+        { isAuthenticated() && (<Profile {...this.props} />) }
+      </div>
+    );
+  }
 }
 
-
-
-
-
-
 export default EditDrink;
-
-
-// import RecipeForm from "./RecipeForm.js"
-// // import "./RecipeEdit.css";
-// // import { } from 'react-materialize';
-
-
-
-// class RecipeEdit extends Component {
-//     state = {
-//         name: "",
-//         liquor: "",
-//         ingredients: ""
-//     };
-
-//     // componentDidMount() {
-//     //     this.loadRecipes();
-//     // }
-
-
-//     loadRecipes = () => {
-//         API.getRecipes()
-//             .then(res =>
-//                 this.setState({ name: "", liquor: "", ingredients: "" })
-//             )
-//             .catch(err => console.log(err));
-//     }
-
-//     handleInputChange = event => {
-//         const { name, value } = event.target;
-//         this.setState({
-//             [name]: value
-//         });
-//     };
-
-//     handleSaveRecipe = event => {
-//         event.preventDefault();
-//         if (this.state.name && this.state.liquor && this.state.ingredients) {
-//             console.log("handleSaveRecipe")
-//             event.preventDefault();
-//             API.saveRecipe({
-//                 name: this.state.name,
-//                 liquor: this.state.liquor,
-//                 ingredients: this.state.ingredients
-//             })
-//                 .catch(err => console.log(err))
-//                 .then(this.setState({ name: "", liquor: "", ingredients: "" }))
-//             // .then(res => this.loadRecipes())
-//         }
-//     };
-
-//     render() {
-
-//         const { isAuthentcated } = this.props.auth;
-
-//         return (
-
-//             <div>
-//                 <NavTabs {...this.props} />
-//                 <div>
-//                     <RecipeForm
-//                         name={this.state.name}
-//                         liquor={this.state.liquor}
-//                         ingredients={this.state.ingredients}
-//                         handleFormSubmit={this.handleSaveRecipe}
-//                         handleInputChange={this.handleInputChange}
-//                     />
-//                 </div>
-//             </div>
-//         );
-//     }
-
-// }
