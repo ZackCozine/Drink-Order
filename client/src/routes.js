@@ -3,6 +3,7 @@ import { Route, Router } from "react-router-dom";
 import Callback from "./Callback/Callback"
 import Home from './pages/HomeLoggedIn/HomeLoggedIn'
 import EditLiquor from "./pages/EditLiquor/EditLiquor"
+import EditDrink from "./pages/EditDrink/EditDrink"
 import AddDrink from "./pages/AddDrink/AddDrink"
 import AddDrinkHC from "./pages/AddDrinkHC/AddDrinkHC"
 import AddDrinkHC2 from "./pages/AddDrinkHC/AddDrinkHC2"
@@ -26,6 +27,7 @@ export const makeMainRoutes = () => {
             <div>
                 <Route exact path="/" render={(props) => <Home auth={auth} {...props} />} />
                 <Route exact path="/EditLiquor" render={(props) => <EditLiquor auth={auth} {...props} />} />
+                <Route exact path="/EditDrink" render={(props) => <EditDrink auth={auth} {...props} />} />
                 <Route exact path="/AddDrink" render={(props) => <AddDrink auth={auth} {...props} />} />
                 <Route exact path="/AddDrinkHC" render={(props) => <AddDrinkHC auth={auth} {...props} />} />
                 <Route exact path="/AddDrinkHC2" render={(props) => <AddDrinkHC2 auth={auth} {...props} />} />
