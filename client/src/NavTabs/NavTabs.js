@@ -48,14 +48,8 @@ export default class NavTabs extends Component {
                         )
                     }
 
-                    {/* Home button */}
-                    <NavItem
-                        onClick={this.goTo.bind(this, '')}
-                        className="nav-link">Home
-                        </NavItem>
-                    {/* Liquor list button */}
-                    
-
+        
+                    {/* Drinks list button */}
                     {
                         isAuthenticated() && (
                             <NavItem
@@ -65,6 +59,7 @@ export default class NavTabs extends Component {
                         )
                     }
 
+                    {/* Liquor list button */}
                     {
                         isAuthenticated() && (
                             <NavItem
