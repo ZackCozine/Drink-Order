@@ -101,6 +101,25 @@ class AddDrink extends Component {
         console.log("handleSaveDrink");
         console.log(this.state.auth)
         console.log(this.state.drinkLiquors);
+
+        const ml_oz = 0.033814;
+        let cost = 0;
+        
+        const costArray = this.state.drinkLiquors.map(tempDL => {
+            const match = this.state.allLiquors.find((tempAL) =>
+                tempDL.name == tempAL.name);
+                console.log('match: ', match);
+                return match.bottleCost / (match.bottleVolume * ml_oz) * tempDL.volume;
+        })
+
+        for (let i = 0; i < costArray.length; i++) {
+            cost += costArray[i];
+        }
+        cost = cost.toFixed(2);
+        const price = (cost * 5).toFixed(2);
+
+        console.log('costArray: ', costArray);
+
         // let formattedLiquor = [];
         // for (let i = 0; i < this.state.drinkLiquors.length; i++) {
         //     formattedLiquor.push({name: this.state.drinkLiquors[i].name, volume: 2});
@@ -109,16 +128,17 @@ class AddDrink extends Component {
             name: this.state.name,
             liquors: this.state.drinkLiquors,
             // liquors: formattedLiquor,
-            // mixers: "tonic",
-            // garnish: "olive",
+            mixers: "tonic",
+            garnish: "olive",
             // liquors: inputLiquor,
             // mixers: [],
             // garnish: [],
+            glassType: "coupe",
+            cost: cost,
+            price: price,
             // glassType: "coupe",
             prep: this.state.prep,
-            cost: 5,
-            price: 0,
-            userID: "Steven"
+            userID: this.props.auth.userProfile.nickname
         })
             .catch(err => console.log(err)).then(
                 // may need to make this.setState a .then
@@ -161,7 +181,7 @@ class AddDrink extends Component {
                         </Row>
 
                         <Row>
-                            <Input s={6} type="select" label="Liquor" value = {this.state.selected}
+                            <Input s={6} type="select" label="Ingredients" value = {this.state.selected}
                             onChange={this.changeSelected}
                             >
                                 <option value = "" name = ""></option>

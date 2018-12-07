@@ -14,6 +14,15 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
+  findByUser: function(req, res) {
+    db.Drink
+     .find({userID: req.params.userId})
+     .sort({ name: 1})
+     .then(dbModel => {
+       res.json(dbModel);
+     })
+     .catch(err => res.status(422).json(err));
+   },
   findById: function(req, res) {
     db.Drink
       .findById(req.params.id)
