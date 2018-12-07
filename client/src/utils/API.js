@@ -21,7 +21,7 @@ export default {
   },
   // Deletes the liquor with the given id
   deleteLiquor: function(id) {
-    console.log("id is: ",id)
+    console.log("id is: ", id)
     return axios.delete("/api/liquors/" + id);
   },
   // Saves a liquor to the database
