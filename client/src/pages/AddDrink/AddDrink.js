@@ -22,12 +22,20 @@ class AddDrink extends Component {
 
     // When page is displayed, loadLiquor is called
     componentDidMount() {
-        this.loadLiquor();
+        console.log("mount", this.loadLiquor());
+        console.log(this.props.auth)
     }
 
-    // Loads saved liquor from mongo database
     loadLiquor = () => {
-        API.getLiquor()
+        this.props.auth.getProfile(this._loadLiquor)
+      }
+
+    // Loads saved liquor from mongo database
+    _loadLiquor = (err, profile) => {
+        console.log("Profile: ", profile.nickname, err)
+        const userId = profile.nickname
+
+        API.getLiquorByUser(userId)
             .then(res => {
                 this.setState({ allLiquors: res.data });
             })
