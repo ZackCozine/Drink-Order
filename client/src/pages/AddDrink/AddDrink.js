@@ -114,8 +114,8 @@ class AddDrink extends Component {
             name: this.state.name,
             liquors: this.state.drinkLiquors,
             // liquors: formattedLiquor,
-            // mixers: "tonic",
-            // garnish: "olive",
+            mixers: "tonic",
+            garnish: "olive",
             // liquors: inputLiquor,
             // mixers: [],
             // garnish: [],
@@ -164,7 +164,7 @@ class AddDrink extends Component {
                         </Row>
 
                         <Row>
-                            <Input s={6} type="select" label="Liquor" defaultValue={this.selected}
+                            <Input s={6} type="select" label="Ingredientsz" defaultValue={this.selected}
                                 onChange={this.changeSelected}
                             >
                                 <option></option>

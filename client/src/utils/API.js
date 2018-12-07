@@ -48,5 +48,9 @@ export default {
   saveDrink: function (DrinkData) {
     console.log("Drink Data: ", DrinkData);
     return axios.post("/api/drinks", DrinkData)
-  }
+  },
+  // Get all liquors by user
+  getDrinkByUser: function(userId) {
+    return axios.get("/api/drinks/byuser/" + userId);
+  },
 };

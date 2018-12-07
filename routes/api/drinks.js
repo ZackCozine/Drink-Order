@@ -14,4 +14,8 @@ router
   .put(drinkController.update)
   .delete(drinkController.remove);
 
+  // Matches with "/api/drinks/:userId"
+router.route("/byuser/:userId")
+.get(drinkController.findByUser);
+
 module.exports = router;
