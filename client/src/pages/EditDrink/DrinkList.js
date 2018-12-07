@@ -8,9 +8,6 @@ const DrinkList = props => (
                 <thead>
                     <tr>
                         <th data-field="name" className="tableIndent">Name</th>
-                        {/* <th data-field="type">Type</th>
-                        <th data-field="volume">Volume</th>
-                        <th data-field="cost">Cost</th> */}
                         <th data-field="edit"></th>
                         <th data-field="delete"></th>
                     </tr>
@@ -19,10 +16,6 @@ const DrinkList = props => (
                     {props.Drink.map((Drink, index) => (
                         <tr key={Drink._id}>
                             <td className="tableIndent">{Drink.name}</td>
-                            {/* <td>{Drink.type}</td>
-                            <td>{Drink.bottleVolume}</td>
-                            <td>{Drink.bottleCost}</td>     
-                            <td>{Drink.userID}</td> */}
                             <td className="editButton">
                             <Modal
                                     header='Edit Drink'
@@ -124,7 +117,7 @@ Collapse 
                             <td className="deleteButton">
                                 <Button floating className="red" onClick={props.handleDeleteDrink}
                                  id={Drink._id} name={index}>X
-                                {/* <i className="material-icons">clear</i> */}
+                                
                                  
                                 </Button>
                             </td>
