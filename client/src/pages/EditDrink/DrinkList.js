@@ -8,9 +8,6 @@ const DrinkList = props => (
                 <thead>
                     <tr>
                         <th data-field="name" className="tableIndent">Name</th>
-                        {/* <th data-field="type">Type</th>
-                        <th data-field="volume">Volume</th>
-                        <th data-field="cost">Cost</th> */}
                         <th data-field="edit"></th>
                         <th data-field="delete"></th>
                     </tr>
@@ -19,12 +16,8 @@ const DrinkList = props => (
                     {props.Drink.map((Drink, index) => (
                         <tr key={Drink._id}>
                             <td className="tableIndent">{Drink.name}</td>
-                            {/* <td>{Drink.type}</td>
-                            <td>{Drink.bottleVolume}</td>
-                            <td>{Drink.bottleCost}</td>     
-                            <td>{Drink.userID}</td> */}
                             <td className="editButton">
-                                <Modal
+                            <Modal
                                     header='Edit Drink'
                                     trigger={<Button floating className="light-green"><i className="material-icons">
                                     list
@@ -40,8 +33,11 @@ const DrinkList = props => (
                                             className="form-control"
                                             id="updateDrink"
                                         />
-                                        {props.Drink[index].liquors.map((liquor) => (
-                                            <Input s={12} 
+                                    </Row>
+                                    
+                                    {props.Drink[index].liquors.map((liquor) => (
+                                        <Row>
+                                            <Input s={6} 
                                                 label= "Ingredients" 
                                                 onChange={props.handleInputChange}
                                                 defaultValue={liquor.name}
@@ -50,7 +46,28 @@ const DrinkList = props => (
                                                 className="form-control"
                                                 id="updateDrink"
                                             />
-                                        ))}
+                                            <Input
+                                                s={3}
+                                                label="Ounces"
+                                                onChange={this.handleInputChange}
+                                                defaultValue={liquor.volume}
+                                                name="volume"
+                                                type="number"
+                                                className="form-control"
+                                                id="AddDrink"
+                                            />
+                                            <Button
+                                                s={2}
+                                                floating large
+                                                className="red"
+                                                onClick={this.addDrinkLiquor}
+                                                className="saveLiquorButton">
+                                                +
+                                            </Button>
+                                        </Row>
+                                    ))}
+                                  
+                                    <Row>
                                         <Input s={12} 
                                             label= "Preparation" 
                                             onChange={props.handleInputChange}
@@ -60,6 +77,8 @@ const DrinkList = props => (
                                             className="form-control"
                                             id="updateDrink"
                                         />
+                                    </Row>
+                                    <Row>
                                         <Input s={12} label= 
                                             "Cost" 
                                             onChange={props.handleInputChange}
@@ -69,6 +88,8 @@ const DrinkList = props => (
                                             className="form-control"
                                             id="updateDrink"
                                         />
+                                    </Row>
+                                    <Row>
                                         <Input s={12} label= 
                                             "Price" 
                                             onChange={props.handleInputChange}
@@ -87,11 +108,16 @@ const DrinkList = props => (
                                         </Button>
                                     </Row>
                                 </Modal>
+
+
+
+Collapse 
+
                             </td>
                             <td className="deleteButton">
                                 <Button floating className="red" onClick={props.handleDeleteDrink}
                                  id={Drink._id} name={index}>X
-                                {/* <i className="material-icons">clear</i> */}
+                                
                                  
                                 </Button>
                             </td>
